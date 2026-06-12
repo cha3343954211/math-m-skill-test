@@ -1,42 +1,149 @@
-# Math Modeling Skill Test Results
+# 数学建模国赛题目应用测试结果
 
-This repository contains real application outputs produced while testing the [`math-modeling` Hermes Agent skill](https://github.com/cha3343954211/math-modeling-skill) on Chinese National Undergraduate Mathematical Contest in Modeling (CUMCM / 国赛) historical problems.
+本仓库包含使用 [`math-modeling` Hermes Agent 智能体技能](https://github.com/cha3343954211/math-modeling-skill)对**全国大学生数学建模竞赛（CUMCM）**历年国赛题目进行完整应用测试的实际产出。
 
-## Purpose
+## 用途与目的
 
-These files demonstrate how the skill behaves on complete mathematical modeling workflows, including:
+这些文件展示了 `math-modeling` 技能在完整数学建模工作流中的实际表现，覆盖了从审题、建模、代码实现到论文写作的全流程。
 
-- problem analysis and modeling route design;
-- code implementation and reproducible outputs;
-- figures, tables, and frozen result files;
-- paper drafts / LaTeX / PDFs where available;
-- supporting-material organization for contest-style submission.
+**适用对象：**
 
-## Model Usage Statement
+- 数学建模竞赛备赛学习者：可参考各题的建模思路、代码实现、图表与论文结构。
+- Hermes Agent 用户：可观察智能体在真实数学建模任务中的产出质量。
+- 教学/科研工作者：可作为数学建模案例库使用。
 
-The full test set was produced with mixed use of the following model families across different problems:
+## 测试覆盖范围
 
-- `gpt-5.5`
-- `mimo-v2.5`
-- `mimo-v2.5-pro`
-- `deepseek v4 flash`
-- `deepseek v4 pro`
-- `glm5.1`
+### 年份与题目列表
 
-Important constraint: **each individual problem was completed end-to-end with only one model**. Models were mixed across the overall test set, not within a single problem workflow.
+| 年份 | 题目 | 题目类型（简要） |
+|------|------|----------------|
+| 2011 | 2011A（土壤重金属污染）| 统计分析 / 空间插值 |
+| 2011 | 2011B（交巡警服务平台）| 图论 / 调度优化 |
+| 2011 | 2011C（养老金制度改革）| 统计建模 / 预测 |
+| 2011 | 2011D（天然肠衣搭配）| 组合优化 / 整数规划 |
+| 2012 | 2012A（葡萄酒评价）| 统计检验 / 评价 |
+| 2012 | 2012B（太阳能小屋设计）| 优化 / 整数规划 |
+| 2012 | 2012C（脑卒中发病环境因素）| 流行病学建模 |
+| 2012 | 2012D（机器人避障）| 路径规划 / 几何 |
+| 2013 | 2013A（车道被占用）| 排队论 / 通行能力 |
+| 2013 | 2013B（碎纸片拼接复原）| 聚类 / 图像匹配 |
+| 2013 | 2013C（古塔变形）| 测量学 / 最小二乘 |
+| 2013 | 2013D（公共自行车服务系统）| 统计分析 / 聚类 |
+| 2014 | 2014A（嫦娥三号软着陆）| 物理建模 / 轨道力学 |
+| 2014 | 2014B（创意平板折叠桌）| 几何建模 / 多目标优化 |
+| 2014 | 2014C（生猪养殖场经营策略）| 存量动力学 / 优化 |
+| 2014 | 2014D（储药柜设计）| 装箱 / 覆盖优化 |
+| 2015 | 2015A（太阳影子定位）| 天文几何 / 反演 |
+| 2015 | 2015B（出租车选址）| 运筹优化 |
+| 2015 | 2015C（月上柳梢头）| 天文学 / 语义分析 |
+| 2015 | 2015D（众筹筑屋）| 整数规划 / 财务核算 |
+| 2017 | 2017A（CT系统参数标定）| 投影重建 / Radon 变换 |
+| 2017 | 2017B（拍照赚钱定价）| 定价策略 / 空间分析 |
+| 2017 | 2017C（颜色与浓度辨识）| 回归建模 / 特征工程 |
+| 2017 | 2017D（巡检线路排班）| VRP / 调度优化 |
 
-## Scope of Included Files
+> 共计 **7 年 × 4 题 = 28 道国赛题目**，文件总计 **4,730 个**，总量约 **300MB**。
 
-The test artifacts are stored under:
+## 使用模型说明
+
+本测试集中，不同题目使用了以下模型完成：
+
+| 模型 | 说明 |
+|------|------|
+| `gpt-5.5` | OpenAI GPT 系列 |
+| `mimo-v2.5` | 小米 MiMo 大模型 |
+| `mimo-v2.5-pro` | 小米 MiMo 大模型（Pro 版本） |
+| `deepseek v4 flash` | DeepSeek 快速推理版 |
+| `deepseek v4 pro` | DeepSeek 专业推理版 |
+| `glm5.1` | 智谱 GLM 系列 |
+
+**重要说明：**
+- **每道题目全程仅使用了一种模型**，即同一个题目从审题到论文完成的全流程均在同一个模型下完成。
+- 不同题目之间可以混用不同模型，本测试集整体是多模型混合的。
+- 目的是展示 `math-modeling` 技能在不同模型后端下的通用性与稳定性。
+
+## 支撑材料目录结构
+
+每道题的产出均按照国赛支撑材料标准结构组织，典型结构如下：
 
 ```text
-examples/test-results/
+<年份>年赛题/<题目>/
+├── 支撑材料/                    # 完整产出
+│   ├── readme.txt              # 本题说明文档
+│   ├── code/                   # 主程序入口（早期结构）
+│   ├── data/                   # 数据文件（附件 / 清洗后数据）
+│   ├── planning/               # 题意分析 / 模型路线记录
+│   ├── references/             # 文献检索 / 外部参考
+│   ├── contracts/              # 模型合同 / Claim-Evidence
+│   ├── results/                # 冻结数字 / 最终结果 / 审计报告
+│   ├── tables/                 # 最终表格（CSV 格式）
+│   ├── quest1/                 # 问题一
+│   │   ├── codes/              # Python 代码
+│   │   ├── figures/            # 图表（PNG）
+│   │   ├── outputs/            # 中间输出 / 结果文件
+│   │   └── tables/             # 问题一专属表格
+│   ├── quest2/ ... questN/     # 其他子问题
+│   ├── papper/                 # 论文
+│   │   ├── 论文.md             # Markdown 草稿
+│   │   ├── 论文.tex            # LaTeX 源文件
+│   │   └── 论文.pdf            # 编译后 PDF
+│   └── qa/                     # 质量审计记录
+└── <题目>题面.doc              # 官方赛题文件（部分题目含）
 ```
 
-To keep the Git repository practical, the copy excludes generated caches, Python bytecode, LaTeX intermediates, and duplicate `.zip` packages. See `examples/test-results/copy_manifest.json` for copy statistics and examples of excluded files.
+## 查看指南
 
-## Notes
+### 按题型学习
 
-- Some problem statements and official format files are historical CUMCM materials used as test inputs.
-- The generated supporting materials are intended as examples of workflow output, not as official contest solutions.
-- If a PDF, spreadsheet, or image is present, it is kept as part of the test artifact for reproducibility and visual inspection.
+| 兴趣方向 | 推荐题目 |
+|----------|---------|
+| 优化建模 | 2011D（装箱）、2012B（整数规划）、2014D（覆盖）、2017D（VRP）|
+| 统计 / 评价 | 2011A（PCA/KMeans）、2012A（AHP/TOPSIS）、2017C（回归）|
+| 预测 / 时序 | 2011C（养老金预测）、2014C（存量动力学）|
+| 物理 / 机理 | 2014A（轨道力学）、2017A（CT 重建）、2018A（热传导）|
+| 图论 / 路径 | 2011B（最短路）、2012D（避障）、2013A（通行能力）|
+| 聚类 / 分类 | 2013B（碎纸片拼接）、2013D（自行车聚类）|
+| 几何 / 反演 | 2015A（太阳影子）、2014B（折叠桌）、2013C（古塔变形）|
+
+### 每道题可关注的内容
+
+- `results/frozen_numbers.json` —— 最终冻结数字，论文所有关键数据均从此文件读取。
+- `papper/论文.tex` —— LaTeX 源文件，可观察公式排版、图表引用、参考文献格式。
+- `papper/论文.pdf` —— 编译后 PDF，直接阅读论文全文。
+- `questN/codes/` —— Python 代码，可运行复现。
+- `questN/figures/` —— 输出图表，可检查数据可视化质量。
+- `qa/` —— 审计报告，可了解质量门控的执行过程。
+
+## 相关仓库
+
+- **skill 主仓库**：[math-modeling-skill](https://github.com/cha3343954211/math-modeling-skill)
+  - 包含完整的 `math-modeling` Hermes Agent 技能包（SKILL.md、references、templates、scripts）。
+  - 提供安装说明、使用指南、完整工作流描述。
+
+## 技术说明
+
+### 排除的文件类型
+
+为控制仓库体积（便于 GitHub 托管），以下文件类型已排除：
+
+| 排除类型 | 原因 |
+|----------|------|
+| `.zip` 压缩包 | 其内容已完整展开在目录中，属于冗余文件 |
+| `.aux` / `.log` / `.out` / `.toc` / `.bbl` / `.blg` | LaTeX 编译中间文件，可重新生成 |
+| `__pycache__/` / `.pyc` / `.pyo` | Python 缓存/字节码 |
+| `.pyc` / `.mat` | MATLAB 工作区文件 |
+
+详细排除列表见 `examples/test-results/copy_manifest.json`。
+
+### 局限性说明
+
+- 部分题目的官方附件（`.doc` / `.xls`）为历史赛题原文，已包含在目录中作为测试输入。
+- 早期测试的部分题目产出结构与后期规范略有差异（如 `code/` 目录 vs `questN/codes/` 结构），这反映了技能本身的迭代过程。
+- 论文 PDF 的排版质量因模型能力差异而有所不同，不代表最终定稿水平。
+
+## 许可证
+
+MIT License —— 详见 [LICENSE](./LICENSE) 文件。
+
+**注意**：官方赛题文件（`.doc` / `.xls` 等）版权归全国大学生数学建模竞赛组委会所有，仅供学习研究使用，不得用于商业用途。
