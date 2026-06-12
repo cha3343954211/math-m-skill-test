@@ -1,0 +1,57 @@
+{
+  "data_audit": {
+    "Data1_samples": 48,
+    "Data1_substances": 5,
+    "Data2_samples": 25,
+    "Data2_levels": [
+      0.0,
+      20.0,
+      30.0,
+      50.0,
+      80.0,
+      100.0,
+      150.0
+    ],
+    "missing_after_parse": 0
+  },
+  "question1": {
+    "best_quality_substance": "溴酸钾",
+    "worst_quality_substance": "奶中尿素",
+    "quality_scores": {
+      "溴酸钾": 91.6444887371085,
+      "工业碱": 91.08957948932337,
+      "组胺": 89.41414445726397,
+      "硫酸铝钾": 73.0,
+      "奶中尿素": 52.905824789058485
+    },
+    "criteria": [
+      "单调性(Spearman)",
+      "相邻浓度可分性",
+      "重复测量稳定性",
+      "留一预测误差"
+    ]
+  },
+  "question2": {
+    "best_model": "FiveDim_Poly2_Ridge",
+    "best_LOO_RMSE": 10.250662982876188,
+    "best_LOO_MAE": 6.166154430734845,
+    "best_LOO_MAPE_percent": 9.751176141150163,
+    "best_LOO_R2": 0.95962587160776,
+    "baseline_RMSE": 13.714699128022131,
+    "residual_mean": -1.0263248365320703,
+    "residual_std": 10.409468292057955,
+    "max_abs_error": 32.48171804362843
+  },
+  "question3": {
+    "dimension_best_full_rmse": "RGBSH",
+    "full_sample_dimension_rmse": {
+      "D0": 13.711177605424798,
+      "RGB": 15.298287865657,
+      "HSV": 12.628715164113775,
+      "RGBSH": 10.597079597451241
+    },
+    "noise_rmse_sigma0": 10.597079597451241,
+    "noise_rmse_sigma5": 23.7295753248406,
+    "top_dimension_by_importance": "H"
+  }
+}

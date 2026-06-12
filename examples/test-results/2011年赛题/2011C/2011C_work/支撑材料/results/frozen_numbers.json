@@ -1,0 +1,125 @@
+{
+  "data_audit": {
+    "wage_years": [
+      1978,
+      2010
+    ],
+    "wage_records": 33,
+    "salary_age_groups": 8,
+    "salary_employees_total": 1664,
+    "enterprise_avg_month_wage_2009": 2579.732,
+    "ima_search_note": "已搜索数学建模2026知识库关键词：养老金替代率、养老保险基金收支平衡、工资预测GM(1,1)，本地返回为空；方法按题意和养老金公式建立。"
+  },
+  "wage_params": {
+    "recent_avg_growth_2005_2010": 0.1442,
+    "long_run_growth": 0.045,
+    "decay_k": 0.072,
+    "baseline_cagr_2000_2010": 0.1384
+  },
+  "q1": {
+    "forecast_2011": 36478.0593,
+    "forecast_2020": 93656.5635,
+    "forecast_2030": 198805.8663,
+    "forecast_2035": 271148.2956,
+    "growth_2035_pct": 6.1398
+  },
+  "q2": [
+    {
+      "start_age": 30,
+      "retire_age": 55,
+      "payment_index": 1.0667,
+      "pension_month0": 3610.6072,
+      "pre_retire_month_wage": 11556.8128,
+      "replacement_rate_pct": 31.2422
+    },
+    {
+      "start_age": 30,
+      "retire_age": 60,
+      "payment_index": 1.0667,
+      "pension_month0": 6485.313,
+      "pre_retire_month_wage": 16538.6932,
+      "replacement_rate_pct": 39.213
+    },
+    {
+      "start_age": 30,
+      "retire_age": 65,
+      "payment_index": 1.0667,
+      "pension_month0": 11390.1915,
+      "pre_retire_month_wage": 22707.8813,
+      "replacement_rate_pct": 50.1596
+    },
+    {
+      "start_age": 40,
+      "retire_age": 55,
+      "payment_index": 1.2666,
+      "pension_month0": 998.3888,
+      "pre_retire_month_wage": 5483.0589,
+      "replacement_rate_pct": 18.2086
+    },
+    {
+      "start_age": 40,
+      "retire_age": 60,
+      "payment_index": 1.2666,
+      "pension_month0": 2264.859,
+      "pre_retire_month_wage": 9042.1348,
+      "replacement_rate_pct": 25.0478
+    },
+    {
+      "start_age": 40,
+      "retire_age": 65,
+      "payment_index": 1.2666,
+      "pension_month0": 4692.0437,
+      "pre_retire_month_wage": 13723.2441,
+      "replacement_rate_pct": 34.1905
+    }
+  ],
+  "q3": [
+    {
+      "retire_age": 55,
+      "total_fund_at_retire": 482957.2675,
+      "cum_pension_to_75": 1826372.3697,
+      "gap_to_75": 1343415.1022,
+      "break_even_age": 62.9961,
+      "replacement_rate_pct": 31.2422
+    },
+    {
+      "retire_age": 60,
+      "total_fund_at_retire": 816715.5602,
+      "cum_pension_to_75": 1952168.7466,
+      "gap_to_75": 1135453.1865,
+      "break_even_age": 67.8578,
+      "replacement_rate_pct": 39.213
+    },
+    {
+      "retire_age": 65,
+      "total_fund_at_retire": 1304699.2722,
+      "cum_pension_to_75": 1891077.9698,
+      "gap_to_75": 586378.6975,
+      "break_even_age": 72.4306,
+      "replacement_rate_pct": 50.1596
+    }
+  ],
+  "q4_policy": [
+    {
+      "retire_age": 55,
+      "required_total_contrib_rate_for_75_balance": 1.0589,
+      "increase_pp": 77.886,
+      "replacement_rate_pct": 31.2422,
+      "gap_to_75": 1343415.1022
+    },
+    {
+      "retire_age": 60,
+      "required_total_contrib_rate_for_75_balance": 0.6693,
+      "increase_pp": 38.9275,
+      "replacement_rate_pct": 39.213,
+      "gap_to_75": 1135453.1865
+    },
+    {
+      "retire_age": 65,
+      "required_total_contrib_rate_for_75_balance": 0.4058,
+      "increase_pp": 12.5842,
+      "replacement_rate_pct": 50.1596,
+      "gap_to_75": 586378.6975
+    }
+  ]
+}

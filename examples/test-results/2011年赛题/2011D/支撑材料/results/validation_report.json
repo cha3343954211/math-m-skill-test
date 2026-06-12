@@ -1,0 +1,18 @@
+{
+  "rows": 191,
+  "by_spec": {
+    "L": 130,
+    "M": 47,
+    "S": 14
+  },
+  "total_used_roots": 1302,
+  "total_used_length": 17001.0,
+  "min_bundle_length": 88.5,
+  "max_bundle_length": 89.5,
+  "min_roots": 4,
+  "max_roots": 20,
+  "unused_roots": 21,
+  "unused_length": 169.5,
+  "errors": [],
+  "passed": true
+}

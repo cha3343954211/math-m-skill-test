@@ -1,0 +1,25 @@
+{
+  "solution_tag": "greedy_130_47_14",
+  "bundle_counts": {
+    "L": 130,
+    "M": 47,
+    "S": 14
+  },
+  "total_bundles": 191,
+  "total_available_roots": 1323,
+  "total_available_length_m": 17170.5,
+  "used_roots": 1302,
+  "used_length_m": 17001.0,
+  "unused_roots": 21,
+  "unused_length_m": 169.5,
+  "upper_bound_by_length": 194,
+  "all_bundles_feasible": true,
+  "length_error_range_m": [
+    -0.5,
+    0.5
+  ],
+  "root_count_range": [
+    4,
+    20
+  ]
+}

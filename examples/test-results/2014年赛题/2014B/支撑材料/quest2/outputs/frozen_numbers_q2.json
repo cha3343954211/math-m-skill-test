@@ -1,0 +1,21 @@
+{
+  "target_D_cm": 80,
+  "target_H_cm": 70,
+  "optimal_plate_size_cm": [
+    151.272,
+    80.0,
+    3
+  ],
+  "strip_count": 32,
+  "rod_eta": 0.35,
+  "max_strip_length_cm": 75.636,
+  "min_strip_length_cm": 70.096,
+  "max_slot_length_cm": 2.773,
+  "mean_slot_length_cm": 1.793,
+  "support_radius_cm": 39.251,
+  "stability": 0.9173,
+  "material_efficiency": 0.4154,
+  "manufacturability": 0.915,
+  "objective_value": 0.211919,
+  "optimization_success": true
+}

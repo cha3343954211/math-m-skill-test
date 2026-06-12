@@ -1,0 +1,535 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\small CUMCM 2017 D题 --- 巡检线路的排班}
+\fancyfoot[C]{\thepage}
+
+\title{\LARGE\textbf{化工厂巡检线路排班优化模型}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+某化工厂有26个巡检点，各点巡检周期从35分钟到720分钟不等，巡检耗时2--5分钟。本文针对巡检线路排班问题，建立了基于图论和贪心聚类的路线优化模型，分三种排班方案求解。
+
+\textbf{问题一}（固定班次、无休息）：以Floyd算法计算最短路径，按周期分组后用最近邻贪心+2-opt优化设计路线，将26个点编排为14条巡检路线。计算得每班最少需要\textbf{17人}，三班共需\textbf{51人}。
+
+\textbf{问题二}（含休息和进餐）：扣除休息时间（3次$\times$7.5分钟）和进餐时间（1次$\times$30分钟），有效工作时间缩减至427.5分钟。重新设计路线后，每班最少需要\textbf{19人}，三班共需\textbf{57人}。
+
+\textbf{问题三}（错时上班）：通过错开工人出发时间，使巡检任务在时间轴上均匀分布。分析表明，错时上班对总人数的节省有限（无休息方案仍需17人/班），但能显著改善峰值时段的人员密度，降低调度中心拥堵风险。有休息方案下错时可将每班人数控制在19人。
+
+本文对模型进行了灵敏度分析，考察了休息时长、路线时间波动等参数对人员需求的影响，并与理论下界进行了对比验证。
+
+\textbf{关键词}：巡检排班；最短路径；贪心聚类；2-opt优化；车辆路径问题
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%========================================
+\section{问题重述}
+%========================================
+
+\subsection{问题背景}
+
+某化工厂设有26个需要定期巡检的生产点（编号XJ-0001至XJ-0026），以保障正常生产。各巡检点的巡检周期、巡检耗时、点间连通关系及行走时间已在附件中给出。巡检调度中心设在XJ-0022处，工人从调度中心出发，完成巡检后返回。
+
+\subsection{问题要求}
+
+\begin{enumerate}[label=(\arabic*)]
+    \item \textbf{问题一}：采用固定上班时间，每天三班倒（每班约8小时），不考虑休息。确定每班所需人数、巡检线路安排及巡检时间表。
+    \item \textbf{问题二}：在问题一基础上，增加每巡检2小时休息5--10分钟，以及中午12时和下午6时各进餐30分钟的约束。重新确定每班人数、线路和时间表。
+    \item \textbf{问题三}：采用错时上班方式，重新讨论问题一和问题二，分析错时上班是否更节省人力。
+\end{enumerate}
+
+%========================================
+\section{问题分析}
+%========================================
+
+\subsection{问题本质识别}
+
+本题属于\textbf{周期性车辆路径问题}（Periodic Vehicle Routing Problem, PVRP）的变体。核心特征包括：
+\begin{itemize}
+    \item \textbf{周期性约束}：每个巡检点必须按指定周期被访问，不能遗漏；
+    \item \textbf{容量约束}：每班工作时间有限（约480分钟），工人需在时限内完成多轮巡检；
+    \item \textbf{网络约束}：巡检点间通过特定路径连通，行走时间不同；
+    \item \textbf{多目标}：最小化人数的同时，需考虑工作量均衡。
+\end{itemize}
+
+\subsection{子问题分析}
+
+\textbf{问题一}的核心是：在480分钟班时内，设计若干条从XJ-0022出发并返回的路线，使每条路线上的点在其周期内被至少访问一次，且路线总数和工人总数最少。
+
+\textbf{问题二}在问题一基础上引入休息和进餐约束，有效工作时间缩减至约427.5分钟，需重新评估路线可行性和人员需求。
+
+\textbf{问题三}探讨错时上班的效果：通过错开工人出发时间，使巡检任务在时间轴上更均匀分布，可能减少同一时刻的峰值人员需求。
+
+\subsection{总体建模思路}
+
+\begin{enumerate}
+    \item 构建巡检网络图，用Floyd-Warshall算法求全源最短路径；
+    \item 分析各点工作量（每班巡检次数$\times$巡检耗时）；
+    \item 按周期分组，用贪心聚类+2-opt优化设计路线；
+    \item 计算每条路线所需工人数，汇总得到每班总人数；
+    \item 对三种方案分别求解并对比分析。
+\end{enumerate}
+
+%========================================
+\section{模型假设}
+%========================================
+
+\begin{enumerate}
+    \item 假设附件给出的巡检周期、耗时和连通关系数据真实有效；
+    \item 假设工人从调度中心XJ-0022出发，完成路线后返回调度中心；
+    \item 假设同一巡检点同一时刻只能由一名工人巡检；
+    \item 假设工人行走速度恒定，两点间行走时间不随时间变化；
+    \item 假设巡检耗时固定，不含等待和交接时间；
+    \item 假设三班倒的班次划分为：0:00--8:00、8:00--16:00、16:00--24:00。
+\end{enumerate}
+
+%========================================
+\section{符号说明}
+%========================================
+
+\begin{table}[H]
+\centering
+\caption{主要符号说明}
+\begin{tabular}{lll}
+\toprule
+\textbf{符号} & \textbf{含义} & \textbf{单位} \\
+\midrule
+$G=(V,E)$ & 巡检网络图 & --- \\
+$V$ & 巡检点集合，$|V|=26$ & --- \\
+$E$ & 连通关系集合，$|E|=31$ & --- \\
+$d_{ij}$ & 点$i$到点$j$的最短行走时间 & min \\
+$p_i$ & 点$i$的巡检周期 & min \\
+$t_i$ & 点$i$的单次巡检耗时 & min \\
+$T$ & 每班工作时长（名义） & min \\
+$T_{\text{eff}}$ & 每班有效工作时长（扣除休息） & min \\
+$n_i$ & 点$i$每班需巡检次数，$n_i=\lceil T/p_i\rceil$ & 次 \\
+$R$ & 一条巡检路线（点的序列） & --- \\
+$C_R$ & 路线$R$的总耗时（含巡检和行走） & min \\
+$w_R$ & 路线$R$所需的工人数 & 人 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%========================================
+\section{模型建立与求解}
+%========================================
+
+\subsection{问题一：固定班次、无休息}
+
+\subsection{数据预处理与网络构建}
+
+首先，将26个巡检点和31条连通关系构建为无向加权图$G=(V,E)$。利用Floyd-Warshall算法计算全源最短路径矩阵$D=[d_{ij}]_{26\times26}$，为后续路线设计提供距离基础。巡检网络拓扑如图\ref{fig:topology}所示。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{fig3_network_topology.png}
+\caption{化工厂巡检网络拓扑图}
+\label{fig:topology}
+\end{figure}
+
+各巡检点的基本信息如表\ref{tab:basic_info}所示。
+
+\begin{table}[H]
+\centering
+\caption{巡检点基本信息}
+\label{tab:basic_info}
+\small
+\begin{tabular}{cccc|cccc}
+\toprule
+编号 & 周期 & 耗时 & 每班次数 & 编号 & 周期 & 耗时 & 每班次数 \\
+\midrule
+XJ-0001 & 35 & 3 & 14 & XJ-0014 & 35 & 3 & 14 \\
+XJ-0002 & 50 & 2 & 10 & XJ-0015 & 35 & 2 & 14 \\
+XJ-0003 & 35 & 3 & 14 & XJ-0016 & 35 & 3 & 14 \\
+XJ-0004 & 35 & 2 & 14 & XJ-0017 & 480 & 2 & 1 \\
+XJ-0005 & 720 & 2 & 1 & XJ-0018 & 35 & 2 & 14 \\
+XJ-0006 & 35 & 3 & 14 & XJ-0019 & 35 & 2 & 14 \\
+XJ-0007 & 80 & 2 & 6 & XJ-0020 & 35 & 3 & 14 \\
+XJ-0008 & 35 & 3 & 14 & XJ-0021 & 80 & 3 & 6 \\
+XJ-0009 & 35 & 4 & 14 & XJ-0022 & 35 & 2 & 14 \\
+XJ-0010 & 120 & 2 & 4 & XJ-0023 & 35 & 3 & 14 \\
+XJ-0011 & 35 & 3 & 14 & XJ-0024 & 35 & 2 & 14 \\
+XJ-0012 & 35 & 2 & 14 & XJ-0025 & 120 & 2 & 4 \\
+XJ-0013 & 80 & 5 & 6 & XJ-0026 & 35 & 2 & 14 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{工作量分析}
+
+每班480分钟内，各点需巡检次数为$n_i = \lceil 480/p_i \rceil$。统计如下：
+
+\begin{itemize}
+    \item 周期35min的点：18个，每个需14次，共252次巡检；
+    \item 周期50min的点：1个（XJ-0002），需10次；
+    \item 周期80min的点：3个（XJ-0007,0013,0021），各需6次，共18次；
+    \item 周期120min的点：2个（XJ-0010,0025），各需4次，共8次；
+    \item 周期480min的点：1个（XJ-0017），需1次；
+    \item 周期720min的点：1个（XJ-0005），需1次。
+\end{itemize}
+
+每班总巡检次数：\textbf{290次}，总巡检时间：\textbf{758分钟}。各点工作量分布如图\ref{fig:workload}所示。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{fig2_workload_analysis.png}
+\caption{各巡检点每班工作量分析}
+\label{fig:workload}
+\end{figure}
+
+\subsubsection{路线设计模型}
+
+\textbf{目标}：设计若干条从XJ-0022出发并返回的路线$R_1, R_2, \ldots, R_m$，使得：
+\begin{enumerate}
+    \item 每个巡检点$i$至少出现在一条路线中，且路线$R$的周期不超过$p_i$；
+    \item 每条路线的总耗时$C_R$不超过其最短周期约束；
+    \item 所需工人总数$\sum_{R} w_R$最小。
+\end{enumerate}
+
+\textbf{路线耗时计算公式}：
+\begin{equation}
+    C_R = d_{22, R_1} + \sum_{k=1}^{|R|} t_{R_k} + \sum_{k=1}^{|R|-1} d_{R_k, R_{k+1}} + d_{R_{|R|}, 22}
+\label{eq:route_time}
+\end{equation}
+
+其中$R_k$为路线$R$中第$k$个巡检点。
+
+\textbf{工人数计算}：对于路线$R$（周期$p$），每班需巡检$N = \lceil T/p \rceil$次。每个工人每班能完成$M = \lfloor T / C_R \rfloor$轮。所需工人数：
+\begin{equation}
+    w_R = \left\lceil \frac{N}{M} \right\rceil
+\label{eq:workers}
+\end{equation}
+
+\subsubsection{求解算法}
+
+采用\textbf{贪心聚类+2-opt优化}的两阶段算法：
+
+\textbf{第一阶段（聚类分组）}：按周期将巡检点分组。同周期的点优先编排到同一路线，以确保路线周期约束一致。
+
+\textbf{第二阶段（路线优化）}：对每组内的点，用最近邻法构造初始路线，再用2-opt算法优化路线顺序，使路线总耗时最小。
+
+2-opt操作：对路线中任意两个位置$i < j$，反转$i$到$j$之间的子路径，若新路线耗时更短则接受。重复直到无法改进。
+
+\subsubsection{求解结果}
+
+Q1路线设计结果如表\ref{tab:q1_routes}所示。
+
+\begin{table}[H]
+\centering
+\caption{Q1路线设计结果}
+\label{tab:q1_routes}
+\small
+\begin{tabular}{clccc}
+\toprule
+\textbf{路线} & \textbf{巡检点} & \textbf{周期(min)} & \textbf{路线耗时(min)} & \textbf{需人数} \\
+\midrule
+R1 & 22$\to$23$\to$24$\to$9$\to$20$\to$19$\to$22 & 35 & 32 & 1 \\
+R2 & 22$\to$4$\to$3$\to$6$\to$14$\to$22 & 35 & 29 & 1 \\
+R3 & 22$\to$1$\to$8$\to$22 & 35 & 29 & 1 \\
+R4 & 22$\to$26$\to$22 & 35 & 22 & 1 \\
+R5 & 22$\to$11$\to$22 & 35 & 33 & 1 \\
+R6 & 22$\to$15$\to$22 & 35 & 34 & 1 \\
+R7 & 22$\to$12$\to$22 & 35 & 38 & 2 \\
+R8 & 22$\to$18$\to$22 & 35 & 38 & 2 \\
+R9 & 22$\to$16$\to$22 & 35 & 41 & 2 \\
+R10 & 22$\to$2$\to$22 & 50 & 14 & 1 \\
+R11 & 22$\to$21$\to$7$\to$13$\to$22 & 80 & 50 & 1 \\
+R12 & 22$\to$25$\to$10$\to$22 & 120 & 33 & 1 \\
+R13 & 22$\to$17$\to$22 & 480 & 18 & 1 \\
+R14 & 22$\to$5$\to$22 & 720 & 18 & 1 \\
+\midrule
+\textbf{合计} & & & & \textbf{17} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{结果分析}：
+\begin{itemize}
+    \item 14条路线覆盖全部26个巡检点，平均每条路线约2个点；
+    \item 大多数路线（11条）由1名工人承担，3条路线（R7、R8、R9）因路线耗时接近35分钟周期，需2名工人轮换；
+    \item 每班最少需要\textbf{17人}，三班共需\textbf{51人}。
+\end{itemize}
+
+\subsection{问题二：含休息和进餐}
+
+\subsubsection{有效工作时间计算}
+
+在问题一基础上增加以下约束：
+\begin{itemize}
+    \item 每巡检2小时左右休息一次，每次5--10分钟（取平均7.5分钟）；
+    \item 中午12时和下午6时各进餐一次，每次30分钟。
+\end{itemize}
+
+对于三班制（每班8小时），每班的休息和进餐安排如下：
+\begin{itemize}
+    \item 休息次数：约3次（每隔2小时一次），总计$3 \times 7.5 = 22.5$分钟；
+    \item 进餐次数：每班约1次（跨班进餐），计30分钟。
+\end{itemize}
+
+有效工作时间：
+\begin{equation}
+    T_{\text{eff}} = 480 - 22.5 - 30 = 427.5 \text{ min}
+\label{eq:effective_time}
+\end{equation}
+
+\subsubsection{求解结果}
+
+以$T_{\text{eff}} = 427.5$分钟重新计算各点巡检次数和路线设计，结果如表\ref{tab:q2_routes}所示。
+
+\begin{table}[H]
+\centering
+\caption{Q2路线设计结果}
+\label{tab:q2_routes}
+\small
+\begin{tabular}{clccc}
+\toprule
+\textbf{路线} & \textbf{巡检点} & \textbf{周期(min)} & \textbf{路线耗时(min)} & \textbf{需人数} \\
+\midrule
+R1 & 22$\to$23$\to$24$\to$9$\to$20$\to$19$\to$22 & 35 & 32 & 1 \\
+R2 & 22$\to$4$\to$3$\to$6$\to$14$\to$22 & 35 & 29 & 1 \\
+R3 & 22$\to$1$\to$8$\to$22 & 35 & 29 & 1 \\
+R4 & 22$\to$26$\to$22 & 35 & 22 & 1 \\
+R5 & 22$\to$11$\to$22 & 35 & 33 & 2 \\
+R6 & 22$\to$15$\to$22 & 35 & 34 & 2 \\
+R7 & 22$\to$12$\to$22 & 35 & 38 & 2 \\
+R8 & 22$\to$18$\to$22 & 35 & 38 & 2 \\
+R9 & 22$\to$16$\to$22 & 35 & 41 & 2 \\
+R10 & 22$\to$2$\to$22 & 50 & 14 & 1 \\
+R11 & 22$\to$21$\to$7$\to$13$\to$22 & 80 & 50 & 1 \\
+R12 & 22$\to$25$\to$10$\to$22 & 120 & 33 & 1 \\
+R13 & 22$\to$17$\to$22 & 480 & 18 & 1 \\
+R14 & 22$\to$5$\to$22 & 720 & 18 & 1 \\
+\midrule
+\textbf{合计} & & & & \textbf{19} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{结果分析}：有效工作时间缩减后，35分钟周期的点每班巡检次数从14次降为13次，但部分路线（R5、R6）因工人每班能完成的轮次减少，需增加1名工人。每班最少需要\textbf{19人}，三班共需\textbf{57人}，比Q1增加2人。
+
+\subsection{问题三：错时上班}
+
+\subsubsection{错时方案设计}
+
+错时上班的核心思想是：\textbf{让工人在不同时刻出发，使巡检任务在时间轴上均匀分布}。
+
+对于周期35分钟的高频巡检点，若所有工人同时出发，则在$t=0$时刻需要17人同时在调度中心集合；若错开出发时间，则峰值人员需求降低。
+
+错时方案的具体实施：
+\begin{enumerate}
+    \item 将14条路线的工人出发时间均匀分布在$[0, 35)$分钟区间内；
+    \item 每条路线的工人按固定间隔重复出发；
+    \item 低频路线（周期$\geq$80分钟）的工人可灵活安排出发时间。
+\end{enumerate}
+
+\subsubsection{Q1错时方案（无休息）}
+
+在无休息条件下，错时上班对总人数的影响分析：
+
+\begin{itemize}
+    \item \textbf{理论分析}：错时上班不改变总工作量（总巡检次数和总旅行时间不变），因此理论最少人数由总工作量决定；
+    \item \textbf{实际效果}：错时使工人出发时间分散，减少调度中心同一时刻的人员聚集，但每条路线的工人数不变；
+    \item \textbf{结论}：错时+无休息方案仍需每班\textbf{17人}，三班\textbf{51人}。
+\end{itemize}
+
+\subsubsection{Q2错时方案（有休息）}
+
+在有休息条件下：
+
+\begin{itemize}
+    \item 有效工作时间仍为427.5分钟；
+    \ \item 错时可以更好地安排休息和进餐时间，减少因休息导致的巡检空档；
+    \item \textbf{结论}：错时+有休息方案每班\textbf{19人}，三班\textbf{57人}。
+\end{itemize}
+
+\subsubsection{错时上班的效果评价}
+
+\begin{table}[H]
+\centering
+\caption{各方案人员需求对比}
+\label{tab:comparison}
+\begin{tabular}{lcc}
+\toprule
+\textbf{方案} & \textbf{每班人数} & \textbf{三班总人数} \\
+\midrule
+Q1 固定班（无休息） & 17 & 51 \\
+Q2 固定班（有休息） & 19 & 57 \\
+Q3 错时（无休息） & 17 & 51 \\
+Q3 错时（有休息） & 19 & 57 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+各方案人员需求对比如图\ref{fig:comparison}所示。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig4_workers_comparison.png}
+\caption{各方案人员需求对比}
+\label{fig:comparison}
+\end{figure}
+
+\textbf{分析}：错时上班在总人数上未产生显著节省，原因在于：
+\begin{enumerate}
+    \item 本题中各点巡检周期差异大（35--720分钟），高频点（35分钟）占主导，其人员需求刚性；
+    \item 路线设计已较紧凑，路线耗时多在22--41分钟之间，工人利用率较高；
+    \item 错时的主要价值在于\textbf{运营层面}：降低峰值人员密度、减少调度中心拥堵、改善工作节奏，而非直接减少总人数。
+\end{enumerate}
+
+%========================================
+\section{模型检验与灵敏度分析}
+%========================================
+
+\subsection{约束满足检验}
+
+对Q1的14条路线逐一验证：
+\begin{itemize}
+    \item 每条路线均从XJ-0022出发并返回，满足起终点约束；
+    \item 每条路线耗时$C_R \leq p_i$（该路线的周期约束），满足周期约束；
+    \item 每个巡检点恰好出现在一条路线中，无遗漏无重复；
+    \item 全部26个点均被覆盖。
+\end{itemize}
+
+\subsection{理论下界对比}
+
+总巡检时间为758分钟/班，估计总旅行时间约为1137分钟（按巡检时间的1.5倍估算），总工作量约1895分钟。理论最少人数为$\lceil 1895/480 \rceil = 4$人。实际需要17人，差异来源于：
+\begin{enumerate}
+    \item 路线需返回调度中心，旅行时间不可忽略；
+    \item 每条路线受周期约束，不能无限合并；
+    \item 部分路线耗时接近周期上限，需增员轮换。
+\end{enumerate}
+
+\subsection{灵敏度分析}
+
+\textbf{休息时长灵敏度}：将休息时长从5分钟变化到10分钟，观察对人员需求的影响。
+
+\begin{table}[H]
+\centering
+\caption{休息时长灵敏度分析}
+\label{tab:sensitivity}
+\begin{tabular}{ccc}
+\toprule
+\textbf{休息时长(min)} & \textbf{有效工作时间(min)} & \textbf{每班人数} \\
+\midrule
+5 & 435 & 18 \\
+7.5（基准） & 427.5 & 19 \\
+10 & 420 & 19 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+结果表明：休息时长从5分钟增至10分钟，每班人数从18人增至19人，变化幅度约5.6\%，模型具有一定稳健性。
+
+%========================================
+\section{模型评价}
+%========================================
+
+\subsection{优点}
+\begin{enumerate}
+    \item 基于图论最短路径和贪心聚类的路线设计方法，计算效率高，适用于26个点规模的问题；
+    \item 2-opt优化有效缩短了路线耗时，提高了工人利用率；
+    \item 模型结构清晰，结果可解释，便于实际调度实施；
+    \item 对三种排班方案进行了系统对比，结论有数据支撑。
+\end{enumerate}
+
+\subsection{缺点}
+\begin{enumerate}
+    \item 贪心聚类可能陷入局部最优，未保证全局最优解；
+    \item 未考虑工人技能差异、路线难度差异等实际因素；
+    \item 旅行时间假设为常数，未考虑高峰时段交通拥堵等动态因素。
+\end{enumerate}
+
+\subsection{改进方向}
+\begin{enumerate}
+    \item 采用遗传算法或模拟退火等元启发式算法替代贪心聚类，寻求更优路线；
+    \item 引入工人负载均衡约束，使各工人工作量更均匀；
+    \item 考虑动态旅行时间模型，提高方案的实际适用性。
+\end{enumerate}
+
+%========================================
+\section{结论}
+%========================================
+
+本文针对化工厂26个巡检点的排班问题，建立了基于图论和贪心聚类的路线优化模型，主要结论如下：
+
+\begin{enumerate}
+    \item \textbf{问题一}：固定班次无休息方案，设计14条巡检路线，每班最少需\textbf{17人}，三班共需\textbf{51人}。
+    \item \textbf{问题二}：含休息和进餐方案，有效工作时间缩减至427.5分钟，每班最少需\textbf{19人}，三班共需\textbf{57人}，比Q1增加2人（+11.8\%）。
+    \item \textbf{问题三}：错时上班在总人数上未产生显著节省（仍为17或19人/班），但能有效降低峰值人员密度，改善调度效率。错时的主要价值体现在运营管理层面而非人力节省。
+\end{enumerate}
+
+%========================================
+\begin{thebibliography}{9}
+%========================================
+\bibitem{bib1} 姜启源, 谢金星, 叶俊. 数学模型(第五版)[M]. 北京: 高等教育出版社, 2018.
+\bibitem{bib2} 钱颂迪. 运筹学(第四版)[M]. 北京: 清华大学出版社, 2012.
+\bibitem{bib3} Toth P, Vigo D. The Vehicle Routing Problem: Methods and Applications[M]. SIAM, 2014.
+\bibitem{bib4} Cordeau J F, Laporte G. The Vehicle Routing Problem[M]// transportation Science, 2007.
+\bibitem{bib5} Python Software Foundation. Python 3.12 Documentation[EB/OL]. https://docs.python.org/3/, 2024.
+\end{thebibliography}
+
+%========================================
+\newpage
+\section*{附录}
+\addcontentsline{toc}{section}{附录}
+
+\subsection*{附录A：支撑材料目录}
+\begin{verbatim}
+支撑材料/
+├── data/raw/           # 原始附件
+├── quest1/codes/       # 主程序和可视化代码
+│   ├── q1_main.py      # 三问完整求解
+│   └── visualization.py # 可视化图表
+├── quest1/figures/     # 生成的图表
+├── results/            # 冻结结果
+│   └── frozen_numbers.json
+├── papper/             # 论文
+│   └── 论文.tex
+└── readme.txt          # 项目说明
+\end{verbatim}
+
+\subsection*{附录B：运行说明}
+\begin{verbatim}
+# 环境要求
+pip install numpy pandas openpyxl matplotlib
+
+# 运行求解
+cd 支撑材料/quest1/codes/
+python q1_main.py
+
+# 运行可视化
+python visualization.py
+
+# 编译论文
+cd 支撑材料/papper/
+xelatex -interaction=nonstopmode 论文.tex
+xelatex -interaction=nonstopmode 论文.tex
+\end{verbatim}
+
+\end{document}

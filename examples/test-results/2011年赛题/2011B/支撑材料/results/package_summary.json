@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-05-29T15:35:18",
+  "pdf": "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2011年赛题\\2011B\\支撑材料\\papper\\论文.pdf",
+  "pdf_size": 2016828,
+  "support_zip": "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2011年赛题\\2011B\\2011B_支撑材料.zip",
+  "support_zip_size": 3610597,
+  "all_zip": "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2011年赛题\\2011B\\2011B_论文PDF与支撑材料.zip",
+  "all_zip_size": 5440534,
+  "required_check": {
+    "papper/论文.pdf": true,
+    "main_modeling.py": true,
+    "write_paper.py": true,
+    "results/frozen_numbers.json": true,
+    "results/quality_audit.md": true,
+    "tables/问题2_P32案发围堵方案.csv": true,
+    "readme.txt": true
+  }
+}

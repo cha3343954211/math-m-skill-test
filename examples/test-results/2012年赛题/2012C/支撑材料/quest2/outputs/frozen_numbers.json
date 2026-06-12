@@ -1,0 +1,9 @@
+{
+  "baseline_test_mae": 15.5132,
+  "main_test_mae": 16.4115,
+  "main_test_rmse": 19.377,
+  "main_pseudo_r2": 0.1209,
+  "aic_improvement": 451.26,
+  "test_mae_improvement_percent": -5.79,
+  "test_mae_change_percent": 5.79
+}

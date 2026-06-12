@@ -1,0 +1,50 @@
+{
+  "q1": {
+    "n_old_tasks": 835,
+    "n_members": 1877,
+    "n_new_tasks": 2066,
+    "original_complete_rate": 0.6251497005988024,
+    "original_price_mean": 69.11077844311377,
+    "original_price_median": 67.0,
+    "original_price_min": 65.0,
+    "original_price_max": 85.0,
+    "completed_price_mean": 69.8199233716475,
+    "unfinished_price_mean": 67.92811501597444,
+    "price_done_corr": 0.20305556686605847,
+    "beta_price_logit_original_scale": 0.019548299081713655,
+    "best_auc": 0.874003892622379
+  },
+  "q2": {
+    "old_total_price": 57707.5,
+    "new_total_price": 72741.5,
+    "old_mean_price": 69.11077844311377,
+    "new_mean_price": 87.11556886227545,
+    "old_pred_complete_rate_ensemble": 0.5585513220397768,
+    "new_pred_complete_rate_ensemble": 0.6182652871324941,
+    "price_increase_rate": 0.26052072954122085,
+    "high_risk_old_prob_lt_0_6": 428,
+    "high_risk_new_prob_lt_0_6": 333
+  },
+  "q3": {
+    "candidate_bundles": 207,
+    "accepted_bundles": 207,
+    "tasks_in_accepted_bundles": 514,
+    "bundle_total_single_price": 45171.5,
+    "bundle_total_package_price": 41407.5,
+    "bundle_saving_rate_on_bundled_tasks": 0.0833268764597146,
+    "mean_bundle_prob": 0.6289103625793807
+  },
+  "q4": {
+    "n_new_tasks": 2066,
+    "single_total_budget": 185836.5,
+    "single_mean_price": 89.9499031945789,
+    "single_min_price": 65.0,
+    "single_max_price": 90.0,
+    "single_pred_complete_rate": 0.2120935824496403,
+    "high_risk_prob_lt_0_6": 2048,
+    "candidate_bundles": 663,
+    "accepted_bundles": 661,
+    "tasks_in_accepted_bundles": 1969,
+    "accepted_bundle_saving_rate": 0.09801315533281973
+  }
+}

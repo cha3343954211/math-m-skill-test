@@ -1,0 +1,179 @@
+{
+  "data_audit": {
+    "template_shape": "256x256",
+    "sinogram_shape": "512x180",
+    "radon_detector_len": 363,
+    "point_count": 10,
+    "pixel_mm": 0.390625
+  },
+  "calibration": {
+    "theta0_deg": 30.08971079936216,
+    "angle_step_deg": 0.9957770273804998,
+    "scale_cell_per_radon_pixel": 1.414686825804083,
+    "detector_spacing_pixel_per_cell": 0.7068702286328408,
+    "detector_spacing_mm_per_cell": 0.2761211830597034,
+    "mean_profile_corr": 0.9986809325957722,
+    "shift_mean_cell": -22.5625,
+    "shift_std_cell": 17.310599574794885,
+    "shift_min_cell": -41.5,
+    "shift_max_cell": 18.25
+  },
+  "template_validation": {
+    "baseline_raw512_shepp_logan": {
+      "name": "baseline_raw512_shepp-logan",
+      "amp_a": 0.5375318036517934,
+      "amp_b": 0.1017887381924525,
+      "mae": 0.2790564600186479,
+      "rmse": 0.3735347775098377,
+      "ssim": 0.08532223818169693,
+      "min": 0.06575260087371039,
+      "max": 0.3723451198535758
+    },
+    "main_corrected_shepp_logan": {
+      "name": "main_corrected_shepp-logan",
+      "amp_a": 1.4348192744891073,
+      "amp_b": -1.6443189898571157e-05,
+      "mae": 0.02787165972289328,
+      "rmse": 0.06073777096668857,
+      "ssim": 0.6825703074270183,
+      "min": -0.5000008972606325,
+      "max": 1.010557386037149
+    },
+    "projection_back_main": {
+      "name": "main_corrected_shepp-logan",
+      "proj_rmse": 1.0017461529061138,
+      "proj_mae": 0.5746410889224743,
+      "proj_corr": 0.9995388854949688,
+      "proj_scale": 0.6978205793371994,
+      "proj_offset": -0.027551906677431796
+    }
+  },
+  "problem2": {
+    "point_absorption": [
+      0.0133,
+      0.842,
+      0.1695,
+      1.5202,
+      1.0584,
+      1.6634,
+      1.0873,
+      0.0302,
+      0.0,
+      0.0194
+    ],
+    "geometry_top5": [
+      {
+        "area_mm2": 2407.53173828125,
+        "centroid_x_mm": 49.663519813981495,
+        "centroid_y_mm": 54.33492739098745,
+        "mean_absorption": 1.0058977486301128,
+        "max_absorption": 1.8448292224457072,
+        "bbox_xmin_mm": 27.9296875,
+        "bbox_xmax_mm": 71.6796875,
+        "bbox_ymin_mm": 10.7421875,
+        "bbox_ymax_mm": 91.9921875
+      }
+    ],
+    "projection_back": {
+      "name": "problem2_rework",
+      "proj_rmse": 4.470153051033314,
+      "proj_mae": 2.6913935885308953,
+      "proj_corr": 0.9939259903383421,
+      "proj_scale": 0.6897948401214248,
+      "proj_offset": -1.9120167822302545
+    }
+  },
+  "problem3": {
+    "point_absorption": [
+      1.1142,
+      2.099,
+      5.5972,
+      0.648,
+      0.9869,
+      2.5076,
+      5.3018,
+      0.8477,
+      7.2589,
+      0.0922
+    ],
+    "geometry_top5": [
+      {
+        "area_mm2": 2002.86865234375,
+        "centroid_x_mm": 49.020491295901266,
+        "centroid_y_mm": 48.35179224440043,
+        "mean_absorption": 2.9144657256503255,
+        "max_absorption": 6.752361951877717,
+        "bbox_xmin_mm": 4.4921875,
+        "bbox_xmax_mm": 95.5078125,
+        "bbox_ymin_mm": 8.3984375,
+        "bbox_ymax_mm": 84.9609375
+      },
+      {
+        "area_mm2": 391.082763671875,
+        "centroid_x_mm": 76.19420296039797,
+        "centroid_y_mm": 22.646572010339447,
+        "mean_absorption": 3.028243198771647,
+        "max_absorption": 7.687163173536337,
+        "bbox_xmin_mm": 62.3046875,
+        "bbox_xmax_mm": 93.1640625,
+        "bbox_ymin_mm": 5.2734375,
+        "bbox_ymax_mm": 41.6015625
+      },
+      {
+        "area_mm2": 170.8984375,
+        "centroid_x_mm": 20.740094866071427,
+        "centroid_y_mm": 83.49923270089286,
+        "mean_absorption": 3.2128440650330243,
+        "max_absorption": 7.699986126303571,
+        "bbox_xmin_mm": 4.8828125,
+        "bbox_xmax_mm": 34.5703125,
+        "bbox_ymin_mm": 73.6328125,
+        "bbox_ymax_mm": 90.8203125
+      },
+      {
+        "area_mm2": 46.9970703125,
+        "centroid_x_mm": 13.685825892857142,
+        "centroid_y_mm": 65.16969358766234,
+        "mean_absorption": 2.932990415340344,
+        "max_absorption": 5.730863821769798,
+        "bbox_xmin_mm": 8.7890625,
+        "bbox_xmax_mm": 20.1171875,
+        "bbox_ymin_mm": 61.9140625,
+        "bbox_ymax_mm": 70.1171875
+      },
+      {
+        "area_mm2": 38.14697265625,
+        "centroid_x_mm": 79.671875,
+        "centroid_y_mm": 83.346875,
+        "mean_absorption": 2.506499208646325,
+        "max_absorption": 3.94562323502185,
+        "bbox_xmin_mm": 74.0234375,
+        "bbox_xmax_mm": 85.3515625,
+        "bbox_ymin_mm": 78.3203125,
+        "bbox_ymax_mm": 87.6953125
+      }
+    ],
+    "projection_back": {
+      "name": "problem3_rework",
+      "proj_rmse": 8.169237751573128,
+      "proj_mae": 5.881112124092496,
+      "proj_corr": 0.9974503327876215,
+      "proj_scale": 0.6803029125098824,
+      "proj_offset": -4.6801862416412074
+    }
+  },
+  "new_template": [
+    {
+      "模板": "原模板",
+      "最小角度剖面距离": 0.1026,
+      "5%分位距离": 2.2826,
+      "平均距离": 8.6776
+    },
+    {
+      "模板": "新设计模板",
+      "最小角度剖面距离": 0.7292,
+      "5%分位距离": 5.0137,
+      "平均距离": 16.0723
+    }
+  ]
+}

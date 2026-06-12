@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-05-30T23:08:54",
+  "data_audit": {
+    "raw_records": 424,
+    "years": [
+      1986,
+      1996,
+      2009,
+      2011
+    ],
+    "layers_modeled": "1-13 layers; tower tip separately averaged when available",
+    "missing_note": "1986/1996第13层5号点缺测；圆拟合使用其余7点。2009/2011塔尖未给多点，仅分析至第13层。"
+  },
+  "circle_fit": {
+    "max_rms_m": 0.07742965130212844,
+    "median_rms_m": 0.05000361406164293
+  },
+  "deformation_summary": [
+    {
+      "year": 1986,
+      "top_offset": 0.6292203092374575,
+      "top_dx": 0.5365578567266311,
+      "top_dy": -0.32866984032887103,
+      "top_azimuth_deg": 328.51034453666125,
+      "top_inclination_deg": 0.706210070147109,
+      "top_inclination_ratio": 0.012326315156646048,
+      "max_bending": 0.019692599164718418,
+      "max_bending_layer": "10",
+      "mean_bending": 0.007155471014701599,
+      "axis_slope_x": 0.010326200147916699,
+      "axis_slope_y": -0.006305706521980043
+    },
+    {
+      "year": 1996,
+      "top_offset": 0.6374489386667027,
+      "top_dx": 0.5425353809607714,
+      "top_dy": -0.33465879610889715,
+      "top_azimuth_deg": 328.331957051392,
+      "top_inclination_deg": 0.7154433282496083,
+      "top_inclination_ratio": 0.012487490717705307,
+      "max_bending": 0.019548596400587995,
+      "max_bending_layer": "10",
+      "mean_bending": 0.007057837167907164,
+      "axis_slope_x": 0.01044898670126605,
+      "axis_slope_y": -0.006430204938032013
+    },
+    {
+      "year": 2009,
+      "top_offset": 0.6790724039610743,
+      "top_dx": 0.5367319480890274,
+      "top_dy": -0.4160025789848305,
+      "top_azimuth_deg": 322.22196024992695,
+      "top_inclination_deg": 0.762051625903694,
+      "top_inclination_ratio": 0.013301094264854024,
+      "max_bending": 0.06181643268721024,
+      "max_bending_layer": "1",
+      "mean_bending": 0.029234479892743945,
+      "axis_slope_x": 0.01124663982432307,
+      "axis_slope_y": -0.008324900290275578
+    },
+    {
+      "year": 2011,
+      "top_offset": 0.6807961661873232,
+      "top_dx": 0.5379039084579063,
+      "top_dy": -0.4173042117701016,
+      "top_azimuth_deg": 322.19579916102157,
+      "top_inclination_deg": 0.7640456490059838,
+      "top_inclination_ratio": 0.013335902706663301,
+      "max_bending": 0.061855921790680564,
+      "max_bending_layer": "1",
+      "mean_bending": 0.029251675147934593,
+      "axis_slope_x": 0.011271976996285798,
+      "axis_slope_y": -0.008354064774062968
+    }
+  ],
+  "trend_prediction": {
+    "top_offset_2021": 0.7050655534099618,
+    "top_azimuth_2021": 319.7177094441585,
+    "top_offset_2030": 0.7285899370723448,
+    "top_azimuth_2030": 317.55279281799585
+  },
+  "top_layer_trend": [
+    {
+      "layer": 13,
+      "variable": "dx",
+      "slope_per_year": -2.7325761004546817e-05,
+      "intercept_1986": 0.5388284970931501,
+      "r2": 0.013112090608983773,
+      "pred_2021": 0.537872095457991,
+      "pred_2030": 0.53762616360895
+    },
+    {
+      "layer": 13,
+      "variable": "dy",
+      "slope_per_year": -0.003985566289826776,
+      "intercept_1986": -0.3163681455956867,
+      "r2": 0.9058914345802238,
+      "pred_2021": -0.45586296573962387,
+      "pred_2030": -0.49173306234806485
+    },
+    {
+      "layer": 13,
+      "variable": "offset",
+      "slope_per_year": 0.0022476040452608457,
+      "intercept_1986": 0.624044195856857,
+      "r2": 0.9453944649919056,
+      "pred_2021": 0.7027103374409867,
+      "pred_2030": 0.7229387738483342
+    }
+  ]
+}

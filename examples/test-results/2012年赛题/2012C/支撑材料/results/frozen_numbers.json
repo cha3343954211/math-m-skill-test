@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "generated_at": "2026-05-30T17:57:41",
+    "seed": 42,
+    "project": "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2012年赛题\\2012C"
+  },
+  "Q1": {
+    "total_cases": 61851,
+    "male_percent": 53.93,
+    "age_mean": 69.81,
+    "age_ge_60_percent": 80.51,
+    "top_age_group": "70-79",
+    "top_occupation": "农民",
+    "peak_month": "2008-02",
+    "peak_month_cases": 1965
+  },
+  "Q2": {
+    "baseline_test_mae": 15.5132,
+    "main_test_mae": 16.4115,
+    "main_test_rmse": 19.377,
+    "main_pseudo_r2": 0.1209,
+    "aic_improvement": 451.26,
+    "test_mae_improvement_percent": -5.79,
+    "test_mae_change_percent": 5.79
+  },
+  "Q3": {
+    "warning_thresholds": [
+      50,
+      70,
+      85,
+      95
+    ],
+    "warning_formula": "总风险分=年龄基础分+性别/职业修正分+慢病修正分+气象风险分，按50/70/85/95分划分蓝/黄/橙/红预警。"
+  }
+}

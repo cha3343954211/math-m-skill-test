@@ -1,0 +1,18 @@
+{
+  "D_cm": 50,
+  "H_cm": 53,
+  "wood_width_cm": 2.5,
+  "strip_count": 20,
+  "plate_size_cm": [
+    111.827,
+    50.0,
+    3
+  ],
+  "max_strip_length_cm": 55.913,
+  "min_strip_length_cm": 53.079,
+  "max_slot_length_cm": 2.315,
+  "mean_slot_length_cm": 1.562,
+  "support_radius_cm": 24.254,
+  "stability": 0.9053,
+  "foot_curve_formula": "y_f(x)=sqrt(R^2-x^2)*(0.28+0.35*(|x|/xmax)^1.35), R=25, x_i=(i-10.5)*2.5, i=1..20"
+}

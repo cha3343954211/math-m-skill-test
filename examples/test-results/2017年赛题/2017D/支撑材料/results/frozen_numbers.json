@@ -1,0 +1,53 @@
+{
+  "q1": {
+    "workers_per_shift": 17,
+    "total_3shifts": 51,
+    "num_routes": 14,
+    "total_inspect_visits": 290,
+    "total_inspect_time_min": 758,
+    "routes": [
+      {"points": [22,23,24,9,20,19], "period": 35, "route_time": 32, "workers": 1},
+      {"points": [22,4,3,6,14], "period": 35, "route_time": 29, "workers": 1},
+      {"points": [22,1,8], "period": 35, "route_time": 29, "workers": 1},
+      {"points": [22,26], "period": 35, "route_time": 22, "workers": 1},
+      {"points": [22,11], "period": 35, "route_time": 33, "workers": 1},
+      {"points": [22,15], "period": 35, "route_time": 34, "workers": 1},
+      {"points": [22,12], "period": 35, "route_time": 38, "workers": 2},
+      {"points": [22,18], "period": 35, "route_time": 38, "workers": 2},
+      {"points": [22,16], "period": 35, "route_time": 41, "workers": 2},
+      {"points": [22,2], "period": 50, "route_time": 14, "workers": 1},
+      {"points": [22,21,7,13], "period": 80, "route_time": 50, "workers": 1},
+      {"points": [22,25,10], "period": 120, "route_time": 33, "workers": 1},
+      {"points": [22,17], "period": 480, "route_time": 18, "workers": 1},
+      {"points": [22,5], "period": 720, "route_time": 18, "workers": 1}
+    ]
+  },
+  "q2": {
+    "workers_per_shift": 19,
+    "total_3shifts": 57,
+    "effective_shift_min": 427.5,
+    "rest_time_min": 22.5,
+    "meal_time_min": 30,
+    "routes": [
+      {"points": [22,23,24,9,20,19], "period": 35, "route_time": 32, "workers": 1},
+      {"points": [22,4,3,6,14], "period": 35, "route_time": 29, "workers": 1},
+      {"points": [22,1,8], "period": 35, "route_time": 29, "workers": 1},
+      {"points": [22,26], "period": 35, "route_time": 22, "workers": 1},
+      {"points": [22,11], "period": 35, "route_time": 33, "workers": 2},
+      {"points": [22,15], "period": 35, "route_time": 34, "workers": 2},
+      {"points": [22,12], "period": 35, "route_time": 38, "workers": 2},
+      {"points": [22,18], "period": 35, "route_time": 38, "workers": 2},
+      {"points": [22,16], "period": 35, "route_time": 41, "workers": 2},
+      {"points": [22,2], "period": 50, "route_time": 14, "workers": 1},
+      {"points": [22,21,7,13], "period": 80, "route_time": 50, "workers": 1},
+      {"points": [22,25,10], "period": 120, "route_time": 33, "workers": 1},
+      {"points": [22,17], "period": 480, "route_time": 18, "workers": 1},
+      {"points": [22,5], "period": 720, "route_time": 18, "workers": 1}
+    ]
+  },
+  "q3": {
+    "stagger_no_rest": {"workers_per_shift": 17, "total_3shifts": 51},
+    "stagger_with_rest": {"workers_per_shift": 19, "total_3shifts": 57},
+    "conclusion": "错时上班在总人数上无显著节省，但能降低峰值人员密度"
+  }
+}

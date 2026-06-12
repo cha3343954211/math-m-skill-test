@@ -1,0 +1,34 @@
+{
+  "problem1": {
+    "break_even_N": 2.84,
+    "piglets_per_litter": 1.42,
+    "breeder_proportion": 0.0881,
+    "annual_profit_at_break_even": 0.0
+  },
+  "problem2": {
+    "sow_inventory": 893.0,
+    "total_breeder": 1340.0,
+    "meat_inventory": 8660.0,
+    "annual_meat_sales": 15052.0,
+    "breeder_proportion": 0.01462,
+    "total_capacity": 10000.0
+  },
+  "problem3": {
+    "optimal_p": 0.005,
+    "three_year_profit": 18044110.37,
+    "avg_annual_profit": 6014703.46,
+    "avg_price": 15.1,
+    "sow_inventory": 1000,
+    "price_range": [
+      10.7,
+      19.6
+    ]
+  },
+  "parameters": {
+    "max_capacity": 10000,
+    "meat_weight": 90,
+    "breeder_lifespan": 4,
+    "piglets_per_litter": 9,
+    "pregnancies_per_year": 2
+  }
+}

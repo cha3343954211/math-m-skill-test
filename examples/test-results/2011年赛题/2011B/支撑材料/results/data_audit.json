@@ -1,0 +1,27 @@
+{
+  "nodes": 582,
+  "edges": 928,
+  "platforms": 80,
+  "city_exits": 17,
+  "A_exits": 13,
+  "missing": {
+    "nodes": {
+      "node": 0,
+      "x": 0,
+      "y": 0,
+      "area": 0,
+      "crime_rate": 0
+    },
+    "edges": {
+      "u": 0,
+      "v": 0
+    },
+    "platforms": {
+      "platform": 0,
+      "node": 0
+    }
+  },
+  "graph_connected": true,
+  "components": 1,
+  "random_seed": 42
+}

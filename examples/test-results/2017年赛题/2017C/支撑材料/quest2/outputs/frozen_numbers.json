@@ -1,0 +1,11 @@
+{
+  "best_model": "FiveDim_Poly2_Ridge",
+  "best_LOO_RMSE": 10.250662982876188,
+  "best_LOO_MAE": 6.166154430734845,
+  "best_LOO_MAPE_percent": 9.751176141150163,
+  "best_LOO_R2": 0.95962587160776,
+  "baseline_RMSE": 13.714699128022131,
+  "residual_mean": -1.0263248365320703,
+  "residual_std": 10.409468292057955,
+  "max_abs_error": 32.48171804362843
+}

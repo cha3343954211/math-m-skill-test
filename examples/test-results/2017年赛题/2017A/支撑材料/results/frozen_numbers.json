@@ -1,0 +1,209 @@
+{
+  "data_audit": {
+    "template_shape": "256x256",
+    "sinogram_shape": "512x180",
+    "point_count": 10,
+    "template_min": 0.0,
+    "template_max": 1.0
+  },
+  "calibration": {
+    "rotation_center_pixel_x": 124.5543,
+    "rotation_center_pixel_y": 89.9345,
+    "rotation_center_mm_x": 48.8493,
+    "rotation_center_mm_y": 64.674,
+    "detector_spacing_pixel": 0.7143,
+    "detector_spacing_mm": 0.279,
+    "initial_angle_deg": 30.5,
+    "angle_step_deg": 1.0,
+    "mean_matching_corr": 0.9703,
+    "template_reconstruction_MAE": 0.2847,
+    "template_reconstruction_RMSE": 0.3839,
+    "template_reconstruction_SSIM": 0.2728
+  },
+  "problem2": {
+    "point_absorption": [
+      0.0,
+      0.7224,
+      1.0103,
+      0.9616,
+      0.9459,
+      0.8477,
+      0.9257,
+      0.8181,
+      0.0,
+      0.1038
+    ],
+    "threshold": 0.4806,
+    "component_count_reported": 3,
+    "main_components": [
+      {
+        "area_mm2": 4413.299560546875,
+        "centroid_x_mm": 62.598274135203816,
+        "centroid_y_mm": 50.92133774375065,
+        "mean_absorption": 0.7795839181013368,
+        "max_absorption": 1.3299638162280172,
+        "bbox_xmin_mm": 27.1484375,
+        "bbox_xmax_mm": 95.8984375,
+        "bbox_ymin_mm": 0.1953125,
+        "bbox_ymax_mm": 99.8046875
+      },
+      {
+        "area_mm2": 73.54736328125,
+        "centroid_x_mm": 81.73787603734439,
+        "centroid_y_mm": 5.704583765560166,
+        "mean_absorption": 0.6958551031797056,
+        "max_absorption": 0.8360290552331984,
+        "bbox_xmin_mm": 72.4609375,
+        "bbox_xmax_mm": 90.0390625,
+        "bbox_ymin_mm": 0.1953125,
+        "bbox_ymax_mm": 18.5546875
+      },
+      {
+        "area_mm2": 14.495849609375,
+        "centroid_x_mm": 8.694490131578947,
+        "centroid_y_mm": 68.22162828947368,
+        "mean_absorption": 0.5551766374256185,
+        "max_absorption": 0.8035457065969493,
+        "bbox_xmin_mm": 7.2265625,
+        "bbox_xmax_mm": 9.9609375,
+        "bbox_ymin_mm": 62.6953125,
+        "bbox_ymax_mm": 73.6328125
+      }
+    ]
+  },
+  "problem3": {
+    "point_absorption": [
+      2.3973,
+      2.2628,
+      0.8072,
+      0.6024,
+      2.6064,
+      0.0058,
+      0.9255,
+      1.2703,
+      3.5319,
+      0.9318
+    ],
+    "threshold": 1.6465,
+    "component_count_reported": 10,
+    "main_components": [
+      {
+        "area_mm2": 2082.82470703125,
+        "centroid_x_mm": 64.48262934981685,
+        "centroid_y_mm": 46.3829842032967,
+        "mean_absorption": 2.7663569327979465,
+        "max_absorption": 5.582902724456759,
+        "bbox_xmin_mm": 22.0703125,
+        "bbox_xmax_mm": 99.8046875,
+        "bbox_ymin_mm": 2.1484375,
+        "bbox_ymax_mm": 95.8984375
+      },
+      {
+        "area_mm2": 328.369140625,
+        "centroid_x_mm": 10.846741403345725,
+        "centroid_y_mm": 21.254392716078065,
+        "mean_absorption": 2.8503663061876083,
+        "max_absorption": 5.582902724456759,
+        "bbox_xmin_mm": 0.1953125,
+        "bbox_xmax_mm": 31.0546875,
+        "bbox_ymin_mm": 0.1953125,
+        "bbox_ymax_mm": 40.0390625
+      },
+      {
+        "area_mm2": 249.6337890625,
+        "centroid_x_mm": 34.410098945599024,
+        "centroid_y_mm": 89.23584581295843,
+        "mean_absorption": 2.76662472258628,
+        "max_absorption": 5.582902724456759,
+        "bbox_xmin_mm": 16.6015625,
+        "bbox_xmax_mm": 58.0078125,
+        "bbox_ymin_mm": 77.5390625,
+        "bbox_ymax_mm": 97.4609375
+      },
+      {
+        "area_mm2": 212.860107421875,
+        "centroid_x_mm": 91.49291554659499,
+        "centroid_y_mm": 11.142613127240143,
+        "mean_absorption": 2.6552578372277336,
+        "max_absorption": 4.457275257915468,
+        "bbox_xmin_mm": 79.1015625,
+        "bbox_xmax_mm": 99.8046875,
+        "bbox_ymin_mm": 0.1953125,
+        "bbox_ymax_mm": 26.3671875
+      },
+      {
+        "area_mm2": 173.64501953125,
+        "centroid_x_mm": 21.01892025483304,
+        "centroid_y_mm": 44.04176735500879,
+        "mean_absorption": 2.575840935337007,
+        "max_absorption": 5.582902724456759,
+        "bbox_xmin_mm": 4.4921875,
+        "bbox_xmax_mm": 36.9140625,
+        "bbox_ymin_mm": 34.9609375,
+        "bbox_ymax_mm": 54.8828125
+      }
+    ]
+  },
+  "sensitivity": [
+    {
+      "参数": "初始角扰动/°",
+      "扰动": -0.5,
+      "RMSE": 0.3838,
+      "SSIM": 0.273
+    },
+    {
+      "参数": "初始角扰动/°",
+      "扰动": -0.25,
+      "RMSE": 0.3838,
+      "SSIM": 0.2732
+    },
+    {
+      "参数": "初始角扰动/°",
+      "扰动": 0.0,
+      "RMSE": 0.3839,
+      "SSIM": 0.2728
+    },
+    {
+      "参数": "初始角扰动/°",
+      "扰动": 0.25,
+      "RMSE": 0.384,
+      "SSIM": 0.2728
+    },
+    {
+      "参数": "初始角扰动/°",
+      "扰动": 0.5,
+      "RMSE": 0.3824,
+      "SSIM": 0.2722
+    },
+    {
+      "参数": "探测器间距相对扰动",
+      "扰动": -0.04,
+      "RMSE": 0.3845,
+      "SSIM": 0.2971
+    },
+    {
+      "参数": "探测器间距相对扰动",
+      "扰动": -0.02,
+      "RMSE": 0.3839,
+      "SSIM": 0.291
+    },
+    {
+      "参数": "探测器间距相对扰动",
+      "扰动": 0.0,
+      "RMSE": 0.3839,
+      "SSIM": 0.2728
+    },
+    {
+      "参数": "探测器间距相对扰动",
+      "扰动": 0.02,
+      "RMSE": 0.3828,
+      "SSIM": 0.2759
+    },
+    {
+      "参数": "探测器间距相对扰动",
+      "扰动": 0.04,
+      "RMSE": 0.3824,
+      "SSIM": 0.2682
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "software_model": "输入桌面边界C_t、高度H、期望桌脚边界C_f；离散木条位置，最小化边界拟合误差+材料面积+加工复杂度并满足稳定/开槽约束。",
+  "creative_designs": [
+    {
+      "name": "椭圆",
+      "plate_size_cm": [
+        134.615,
+        90.0,
+        3
+      ],
+      "strip_count": 36,
+      "max_slot_cm": 2.0
+    },
+    {
+      "name": "圆角方形",
+      "plate_size_cm": [
+        131.836,
+        80.0,
+        3
+      ],
+      "strip_count": 32,
+      "max_slot_cm": 2.837
+    },
+    {
+      "name": "花瓣",
+      "plate_size_cm": [
+        140.917,
+        87.5,
+        3
+      ],
+      "strip_count": 35,
+      "max_slot_cm": 2.078
+    }
+  ],
+  "dynamic_figures_count": 8
+}

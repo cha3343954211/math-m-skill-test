@@ -1,0 +1,12 @@
+{
+  "dimension_best_full_rmse": "RGBSH",
+  "full_sample_dimension_rmse": {
+    "D0": 13.711177605424798,
+    "RGB": 15.298287865657,
+    "HSV": 12.628715164113775,
+    "RGBSH": 10.597079597451241
+  },
+  "noise_rmse_sigma0": 10.597079597451241,
+  "noise_rmse_sigma5": 23.7295753248406,
+  "top_dimension_by_importance": "H"
+}

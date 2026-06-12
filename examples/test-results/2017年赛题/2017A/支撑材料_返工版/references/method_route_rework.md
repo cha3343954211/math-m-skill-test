@@ -1,0 +1,1 @@
+返工版采用模板Radon剖面联合标定 theta0/step/scale，并对每列投影使用 matched-shift 校正后再FBP重建。标定参数真实进入 corrected sinogram 和未知介质重建链。

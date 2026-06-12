@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-31T00:10:15",
+  "constants": {
+    "mu_m3_s2": 4904075411000.0,
+    "moon_radius_m": 1737013.0,
+    "g_moon_m_s2": 1.625365369316238,
+    "Isp_m_s": 2940.0
+  },
+  "Q1": {
+    "近月点半径_m": 1749372.0,
+    "远月点半径_m": 1834372.0,
+    "轨道半长轴_m": 1791872.0,
+    "偏心率": 0.023718212015143937,
+    "近月点速度_m_s": 1694.05575239148,
+    "远月点速度_m_s": 1615.5576402564955,
+    "轨道周期_s": 6805.527186551889,
+    "近月点位置x_m": 1183738.4240406195,
+    "近月点位置y_m": -419416.2844735787,
+    "近月点位置z_m": 1217848.8075915698,
+    "近月点速度x_m_s": 565.7661308597071,
+    "近月点速度y_m_s": 1596.7885199307702,
+    "近月点速度z_m_s": 0.0,
+    "远月点位置x_m": -1241254.9305603607,
+    "远月点位置y_m": 439795.2457123856,
+    "远月点位置z_m": -1277022.6989338822,
+    "远月点速度x_m_s": -539.5500083267231,
+    "远月点速度y_m_s": -1522.7975169095098,
+    "远月点速度z_m_s": -0.0
+  },
+  "Q2_dem": {
+    "dem2400_shape": [
+      2300,
+      2300
+    ],
+    "dem100_shape": [
+      1000,
+      1000
+    ],
+    "coarse_pixel_row": 2038,
+    "coarse_pixel_col": 1916,
+    "coarse_offset_x_m": 766.5,
+    "coarse_offset_y_m": -888.5,
+    "coarse_elevation_m": 99.0,
+    "coarse_slope_deg": 0.0,
+    "coarse_roughness_m": 1.4564310617158633,
+    "coarse_crater_depth_m": 3.9449778997104374,
+    "fine_pixel_row": 906,
+    "fine_pixel_col": 101,
+    "fine_offset_x_m": -39.85,
+    "fine_offset_y_m": -40.650000000000006,
+    "fine_elevation_m": 11.4,
+    "fine_slope_deg": 0.0,
+    "fine_roughness_m": 0.38593550984832814,
+    "fine_crater_depth_m": 1.2060966316110306,
+    "total_offset_x_m": 726.65,
+    "total_offset_y_m": -929.15,
+    "landing_horizontal_offset_m": 1179.5507386289069,
+    "figures": [
+      "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2014年赛题\\2014A\\支撑材料\\results\\figures\\问题2_粗避障安全区评分.png",
+      "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2014年赛题\\2014A\\支撑材料\\results\\figures\\问题2_精避障安全区评分.png",
+      "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2014年赛题\\2014A\\支撑材料\\results\\figures\\问题2_粗避障坡度分布.png"
+    ]
+  },
+  "Q2_trajectory": {
+    "optimizer_success": true,
+    "optimizer_message": "Optimization terminated successfully",
+    "durations_s": {
+      "主减速段": 660.0,
+      "快速调整段": 80.0000000000043,
+      "粗避障段": 180.00000000000014,
+      "精避障段": 45.000000000005244,
+      "缓速下降段": 25.000000000000135
+    },
+    "total_powered_descent_time_s": 990.0000000000098,
+    "fuel_consumption_kg": 1404.9477575930598,
+    "final_mass_kg": 995.0522424069402,
+    "max_thrust_N": 5400.686278291212,
+    "min_equivalent_thrust_N": 1590.9274494633466,
+    "baseline_fuel_kg": 1457.1466897097093,
+    "fuel_saving_vs_baseline_pct": 3.582270233002315,
+    "horizontal_range_km": 647.1795507386289,
+    "trajectory_figure": "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2014年赛题\\2014A\\支撑材料\\results\\figures\\问题2_软着陆轨道与控制曲线.png",
+    "baseline_figure": "E:\\HermesE\\Hermes Agentworks\\mathmodel\\test\\2014年赛题\\2014A\\支撑材料\\results\\figures\\问题2_燃料消耗对比.png"
+  },
+  "Q3_error_monte_carlo": {
+    "touchdown_velocity_mean_m_s": 3.602618774854294,
+    "touchdown_velocity_p95_m_s": 3.677583058947854,
+    "touchdown_velocity_std_m_s": 0.044718541795091236
+  },
+  "quality_gates": {
+    "G1_problem_parsed": true,
+    "G2_method_validated": true,
+    "G3_code_reviewed": true,
+    "G4_results_frozen": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "main_modeling.py",
+  "routes": [
+    {
+      "question_id": "Q1",
+      "baseline": "等权综合评分",
+      "main_model": "熵权-TOPSIS供求匹配评价",
+      "validation": "与等权baseline相关性、时空热力图、指标权重审计"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "补贴前均值对比",
+      "main_model": "补贴前后面板回归 + 平台对比",
+      "validation": "R2/RMSE、成功率与等待时间变化、单均成本"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "无补贴、固定双边补贴",
+      "main_model": "错配驱动动态双边补贴优化",
+      "validation": "与baseline对比、补贴强度敏感性"
+    }
+  ]
+}

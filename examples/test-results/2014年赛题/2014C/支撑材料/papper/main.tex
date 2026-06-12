@@ -1,0 +1,257 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{ctex}
+
+\geometry{margin=2.5cm}
+
+\title{2014C 生猪养殖场经营管理数学建模}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本文针对2014年CUMCM C题"生猪养殖场的经营管理"问题，建立数学模型对盈亏平衡、饱和规模分析和基于价格预测的经营策略三个子问题进行求解。通过稳态平衡模型和动态优化方法，得到：(1) 盈亏平衡时每头母猪年产仔需达2.84头；(2) 饱和规模下母猪存栏893头，种猪比例1.46\%；(3) 基于价格预测，最优种猪比例为0.50\%，平均年利润601万元。模型结果为猪场科学决策提供量化依据。
+
+\textbf{关键词}：生猪养殖；盈亏平衡；饱和规模；价格预测；经营策略
+\end{abstract}
+
+\section{问题分析与建模思路}
+
+\subsection{问题背景}
+某生猪养殖场最大容量10000头，采用母猪繁殖、小猪育肥的养殖模式。母猪年产约2胎，每胎约9头小猪成活。小猪出生后部分选为种猪（公猪/母猪），部分育肥后出栏。种猪寿命约3-5年。
+
+\subsection{子问题分解}
+\begin{enumerate}
+    \item \textbf{问题一}：在假设成本价格不变、不售小猪的前提下，求盈亏平衡所需的每头母猪年产仔数。
+    \item \textbf{问题二}：当养殖场达饱和规模（10000头）时，求种猪比例和母猪存栏数。
+    \item \textbf{问题三}：根据三年价格预测，确定最优经营策略，计算平均年利润及存栏曲线。
+\end{enumerate}
+
+\subsection{模型基本假设}
+\begin{itemize}
+    \item 种猪繁殖周期稳定，年产2胎，每胎成活9头
+    \item 小猪存活率95\%，生长周期约9个月
+    \item 种猪寿命4年，每年淘汰1/4
+    \item 不考虑疫病、自然灾害等外部风险
+    \item 价格预测数据线性插值
+\end{itemize}
+
+\section{符号说明}
+
+\begin{tabular}{ll}
+\toprule
+符号 & 含义 \\
+\midrule
+$N$ & 每头母猪年产仔数（头） \\
+$p$ & 新生小猪中选为种猪的比例 \\
+$S$ & 母猪存栏数（头） \\
+$P$ & 每头母猪年产胎数（2胎/年） \\
+$L$ & 每胎成活小猪数（9头） \\
+$\eta$ & 小猪存活率（0.95） \\
+$T_b$ & 种猪寿命（4年） \\
+$w$ & 肉猪出栏体重（90kg） \\
+$p_m$ & 肉猪价格（14元/kg） \\
+$c_b$ & 种猪饲料成本（8元/头/天） \\
+$c_p$ & 小猪饲料成本（4元/头/天） \\
+$c_m$ & 肉猪饲料成本（6元/头/天） \\
+\bottomrule
+\end{tabular}
+
+\section{问题一：盈亏平衡分析}
+
+\subsection{模型建立}
+
+稳态下，种猪补充比例为：
+\begin{equation}
+p = \frac{1}{T_b \cdot N}
+\end{equation}
+
+每头母猪年肉猪出栏数：
+\begin{equation}
+M = N(1-p)
+\end{equation}
+
+年利润函数（单位：元/头母猪/年）：
+\begin{equation}
+\pi(N) = M \cdot w \cdot p_m - 365c_b - N \cdot L_c \cdot c_p
+\end{equation}
+其中$L_c = 30$为哺乳期天数。
+
+盈亏平衡条件：$\pi(N) = 0$
+
+\subsection{求解结果}
+
+通过二分法求解$\pi(N)=0$，得：
+\begin{equation*}
+N^* = 2.84 \text{ 头/母猪·年}, \quad p^* = 8.81\%
+\end{equation*}
+
+即每头母猪年产仔需达2.84头（每胎1.42头）方可盈亏平衡。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{<LOCAL_MATH_MODELING_TEST_ROOT>/2014年赛题/2014C/支撑材料/quest1/figures/问题一_盈亏平衡分析.png}
+\caption{盈亏平衡分析：年产仔数 vs 每头母猪年利润}
+\end{figure}
+
+\section{问题二：饱和规模分析}
+
+\subsection{模型建立}
+
+饱和时总存栏约束：
+\begin{equation}
+\frac{S}{r_s} + M \cdot \frac{T_m}{365} = C_{\max}
+\end{equation}
+其中$r_s = 2/3$为母猪在种猪中的比例，$T_m = 210$天为肉猪饲养周期。
+
+代入$M = N(1-p)\eta$和稳态$p = \frac{1}{T_b N \eta}$，解得：
+\begin{equation*}
+S = \frac{C_{\max}}{\frac{1}{r_s} + N(1-p)\eta \frac{T_m}{365}}
+\end{equation*}
+
+\subsection{求解结果}
+
+取$C_{\max} = 10000$，$N = 18$（实际年产仔），得：
+\begin{align*}
+p &= 1.46\% \\
+S &= 893 \text{ 头} \\
+\text{总种猪} &= 1340 \text{ 头} \\
+\text{肉猪平均存栏} &= 8660 \text{ 头}
+\end{align*}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{<LOCAL_MATH_MODELING_TEST_ROOT>/2014年赛题/2014C/支撑材料/quest2/figures/问题二_饱和存栏结构.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{<LOCAL_MATH_MODELING_TEST_ROOT>/2014年赛题/2014C/支撑材料/quest2/figures/问题二_饱和存栏结构.png}
+\end{minipage}
+\caption{饱和时存栏结构（左）与比例分布（右）}
+\end{figure}
+
+\section{问题三：基于价格预测的经营策略}
+
+\subsection{价格预测模型}
+
+根据嵌入的Excel数据，得到110天的价格预测序列：
+\begin{equation*}
+P(t), \quad t = 1, 2, \dots, 110
+\end{equation*}
+
+价格范围：10.70 ~ 19.60 元/公斤，平均价14.52元/公斤。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{<LOCAL_MATH_MODELING_TEST_ROOT>/2014年赛题/2014C/支撑材料/quest3/figures/问题三_价格预测与利润分析.png}
+\caption{三年生猪价格预测曲线}
+\end{figure}
+
+\subsection{优化模型}
+
+在不同种猪比例$p$下，计算三年总利润：
+\begin{equation}
+\text{Profit}(p) = \sum_{t=1}^{3 \times 365} \left( \text{Revenue}(t) - \text{Cost}(t) \right)
+\end{equation}
+
+通过搜索$p \in [0.5\%, 20\%]$，得到最优解。
+
+\subsection{求解结果}
+
+\begin{align*}
+p_{\text{opt}} &= 0.50\% \\
+\text{三年总利润} &= 1804 \text{ 万元} \\
+\text{平均年利润} &= 601 \text{ 万元}
+\end{align*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{<LOCAL_MATH_MODELING_TEST_ROOT>/2014年赛题/2014C/支撑材料/quest3/figures/问题三_价格预测与利润分析.png}
+\caption{种猪比例 vs 三年总利润}
+\end{figure}
+
+\section{结果与讨论}
+
+\subsection{结果汇总}
+
+\begin{table}[H]
+\centering
+\caption{各问题求解结果汇总}
+\begin{tabular}{lcc}
+\toprule
+\textbf{问题} & \textbf{关键指标} & \textbf{结果} \\
+\midrule
+盈亏平衡 & 每头母猪年产仔数 & 2.84 头 \\
+ & 每胎产仔数 & 1.42 头 \\
+饱和规模 & 母猪存栏 & 893 头 \\
+ & 种猪比例 & 1.46\% \\
+最优策略 & 最优种猪比例 & 0.50\% \\
+ & 平均年利润 & 601 万元 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{讨论}
+\begin{itemize}
+    \item 盈亏平衡点较低（2.84头/年），说明当前成本结构下猪场盈利空间较大
+    \item 饱和规模下种猪比例仅1.46\%，远低于理论计算值8.81\%，这是因为肉猪规模效应显著
+    \item 最优策略中种猪比例0.50\%低于饱和值，表明在价格波动期应适当减少种猪储备，加快周转
+\end{itemize}
+
+\section{结论与建议}
+
+\subsection{结论}
+\begin{enumerate}
+    \item 猪场达到盈亏平衡的门槛较低，每头母猪年产仔2.84头即可保本
+    \item 饱和规模下，母猪存栏约893头，肉猪平均存栏8660头，种猪比例1.46\%
+    \item 基于价格预测，最优种猪比例0.50\%，可实现平均年利润601万元
+\end{enumerate}
+
+\subsection{管理建议}
+\begin{itemize}
+    \item 保持母猪生产效率在每胎1.5头以上，确保盈利
+    \item 规模扩张时参考饱和结构，控制种猪比例在1.5\%左右
+    \item 价格波动期间灵活调整配种计划，低价格期减少种猪投入
+    \item 建立价格预警机制，动态优化经营策略
+\end{itemize}
+
+\section{模型评价与改进}
+
+\subsection{模型优点}
+\begin{itemize}
+    \item 采用稳态平衡模型，简洁实用
+    \item 考虑了价格波动因素，贴近实际
+    \item 结果具有明确的指导意义
+\end{itemize}
+
+\subsection{改进方向}
+\begin{itemize}
+    \item 引入随机模型考虑疫病等不确定性
+    \item 细化价格预测模型（如时间序列分析）
+    \item 考虑不同猪种的成本差异
+    \item 优化配种时间窗口，最大化利润
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{cmm2014} 中国工业与应用数学学会. 2014年CUMCM赛题[C]. 2014.
+\bibitem{livestock} 畜牧业经济分析模型[M]. 中国农业出版社.
+\end{thebibliography}
+
+\end{document}

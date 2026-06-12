@@ -1,0 +1,70 @@
+{
+  "q1_baseline_unique_width_types": 47,
+  "q1_min_feasible_width_types": 3,
+  "q2_chosen_width_types": 14,
+  "q2_total_width_redundancy": 1458.0,
+  "q2_avg_width_redundancy": 0.7597707139134966,
+  "q2_min_redundancy_all_unique_width_types": 0.0,
+  "q3_chosen_height_types": 16,
+  "q3_total_plane_redundancy": 2021.0,
+  "q4_total_required_slots": 2457,
+  "q4_min_cabinets_heuristic": 2,
+  "q4_area_lower_bound": 2,
+  "q4_height_row_lower_bound": 2,
+  "q4_total_rows": 40,
+  "sample_size": 1919,
+  "data_audit": {
+    "n_drugs": 1919,
+    "missing_values_total": 0,
+    "length_range_mm": [
+      38,
+      139
+    ],
+    "height_range_mm": [
+      28,
+      125
+    ],
+    "width_range_mm": [
+      10,
+      56
+    ],
+    "demand_range_boxes": [
+      1,
+      273
+    ]
+  },
+  "q2_selected_width_slots_mm": [
+    20.0,
+    22.0,
+    24.0,
+    25.0,
+    27.0,
+    29.0,
+    31.0,
+    34.0,
+    37.0,
+    40.0,
+    45.0,
+    49.0,
+    54.0,
+    60.0
+  ],
+  "q3_selected_height_slots_mm": [
+    36.0,
+    41.0,
+    44.0,
+    47.0,
+    51.0,
+    56.0,
+    60.0,
+    66.0,
+    70.0,
+    74.0,
+    77.0,
+    81.0,
+    87.0,
+    94.0,
+    104.0,
+    129.0
+  ]
+}

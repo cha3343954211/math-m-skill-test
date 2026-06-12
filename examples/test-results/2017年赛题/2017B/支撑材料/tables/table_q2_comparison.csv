@@ -1,0 +1,2 @@
+﻿old_total_price,new_total_price,old_mean_price,new_mean_price,old_pred_complete_rate_ensemble,new_pred_complete_rate_ensemble,price_increase_rate,high_risk_old_prob_lt_0_6,high_risk_new_prob_lt_0_6
+57707.5,72741.5,69.11077844311377,87.11556886227545,0.5585513220397768,0.6182652871324941,0.26052072954122085,428,333

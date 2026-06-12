@@ -1,0 +1,10 @@
+{
+  "total_cases": 61851,
+  "male_percent": 53.93,
+  "age_mean": 69.81,
+  "age_ge_60_percent": 80.51,
+  "top_age_group": "70-79",
+  "top_occupation": "农民",
+  "peak_month": "2008-02",
+  "peak_month_cases": 1965
+}

@@ -1,0 +1,75 @@
+{
+  "Q1": {
+    "entropy_weights": {
+      "订单成功率": 0.2155,
+      "供需比接近度": 0.3666,
+      "平均等待时间": 0.3152,
+      "绝对缺口": 0.0442,
+      "空驶率": 0.0585
+    },
+    "baseline_corr_equal_weight": 0.9676,
+    "worst_zone": "远郊组团",
+    "worst_zone_match_index": 0.3992,
+    "worst_zone_wait_min": 17.15,
+    "best_zone": "高校园区",
+    "best_zone_match_index": 0.532,
+    "worst_period": "晚高峰",
+    "worst_period_match_index": 0.3593
+  },
+  "Q2": {
+    "regression_metrics": {
+      "mae": 0.0233,
+      "rmse": 0.032,
+      "r2": 0.8987
+    },
+    "driver_subsidy_coef": 0.0104,
+    "passenger_subsidy_coef": -0.0023,
+    "best_company_for_relief": "B平台",
+    "best_company_success_delta_pct": 5.02,
+    "best_company_wait_delta_min": -1.83,
+    "all_company_delta": [
+      {
+        "company": "A平台",
+        "success_rate_delta": -0.0017,
+        "wait_delta_min": 0.0111,
+        "cost_per_order": 8.0953,
+        "ratio_delta": 0.0007
+      },
+      {
+        "company": "B平台",
+        "success_rate_delta": 0.0502,
+        "wait_delta_min": -1.8321,
+        "cost_per_order": 5.0218,
+        "ratio_delta": 0.1244
+      },
+      {
+        "company": "C平台",
+        "success_rate_delta": 0.0071,
+        "wait_delta_min": -0.3158,
+        "cost_per_order": 1.9511,
+        "ratio_delta": 0.0191
+      }
+    ]
+  },
+  "Q3": {
+    "optimal_params_a_b_c_d": [
+      0.0,
+      0.0,
+      14.0,
+      3.0
+    ],
+    "optimal_policy_match_index": 0.7534,
+    "optimal_policy_success_rate_pct": 83.22,
+    "optimal_policy_wait_min": 10.22,
+    "optimal_policy_cost_per_order": 3.5,
+    "optimal_avg_passenger_subsidy": 0.0,
+    "optimal_avg_driver_subsidy": 9.31,
+    "match_improvement_vs_no_subsidy_pct": 9.54,
+    "wait_reduction_vs_no_subsidy_pct": 28.07
+  },
+  "execution": {
+    "seed": 42,
+    "data_rows": 144,
+    "panel_rows": 2700
+  }
+}

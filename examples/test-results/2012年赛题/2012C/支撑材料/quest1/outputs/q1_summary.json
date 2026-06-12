@@ -1,0 +1,16 @@
+{
+  "total_cases": 61851,
+  "male_count": 33358,
+  "female_count": 28481,
+  "male_percent": 53.93,
+  "age_mean": 69.81304410278224,
+  "age_median": 72.0,
+  "age_ge_60_percent": 80.51446217522756,
+  "top_age_group": "70-79",
+  "top_age_group_count": 21108,
+  "top_occupation": "农民",
+  "top_occupation_percent": 48.04,
+  "peak_month": "2008-02",
+  "peak_month_cases": 1965,
+  "daily_mean_cases": 42.3347022587269
+}

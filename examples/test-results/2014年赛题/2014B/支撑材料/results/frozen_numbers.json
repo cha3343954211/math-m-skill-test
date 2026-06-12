@@ -1,0 +1,88 @@
+{
+  "problem1": {
+    "D_cm": 50,
+    "H_cm": 53,
+    "wood_width_cm": 2.5,
+    "strip_count": 20,
+    "plate_size_cm": [
+      111.827,
+      50.0,
+      3
+    ],
+    "max_strip_length_cm": 55.913,
+    "min_strip_length_cm": 53.079,
+    "max_slot_length_cm": 2.315,
+    "mean_slot_length_cm": 1.562,
+    "support_radius_cm": 24.254,
+    "stability": 0.9053,
+    "foot_curve_formula": "y_f(x)=sqrt(R^2-x^2)*(0.28+0.35*(|x|/xmax)^1.35), R=25, x_i=(i-10.5)*2.5, i=1..20"
+  },
+  "problem2": {
+    "target_D_cm": 80,
+    "target_H_cm": 70,
+    "optimal_plate_size_cm": [
+      151.272,
+      80.0,
+      3
+    ],
+    "strip_count": 32,
+    "rod_eta": 0.35,
+    "max_strip_length_cm": 75.636,
+    "min_strip_length_cm": 70.096,
+    "max_slot_length_cm": 2.773,
+    "mean_slot_length_cm": 1.793,
+    "support_radius_cm": 39.251,
+    "stability": 0.9173,
+    "material_efficiency": 0.4154,
+    "manufacturability": 0.915,
+    "objective_value": 0.211919,
+    "optimization_success": true
+  },
+  "problem3": {
+    "software_model": "输入桌面边界C_t、高度H、期望桌脚边界C_f；离散木条位置，最小化边界拟合误差+材料面积+加工复杂度并满足稳定/开槽约束。",
+    "creative_designs": [
+      {
+        "name": "椭圆",
+        "plate_size_cm": [
+          134.615,
+          90.0,
+          3
+        ],
+        "strip_count": 36,
+        "max_slot_cm": 2.0
+      },
+      {
+        "name": "圆角方形",
+        "plate_size_cm": [
+          131.836,
+          80.0,
+          3
+        ],
+        "strip_count": 32,
+        "max_slot_cm": 2.837
+      },
+      {
+        "name": "花瓣",
+        "plate_size_cm": [
+          140.917,
+          87.5,
+          3
+        ],
+        "strip_count": 35,
+        "max_slot_cm": 2.078
+      }
+    ],
+    "dynamic_figures_count": 8
+  },
+  "validation": {
+    "baseline_q2_plate_size_cm": [
+      151.272,
+      80,
+      3
+    ],
+    "baseline_q2_stability": 0.9161,
+    "baseline_q2_max_slot_cm": 3.618,
+    "sensitivity_max_stability_change_pct": 16.93,
+    "sensitivity_max_slot_change_pct": 20.84
+  }
+}

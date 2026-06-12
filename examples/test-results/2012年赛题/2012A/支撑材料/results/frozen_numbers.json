@@ -1,0 +1,259 @@
+{
+  "generated_at": "2026-05-30T10:38:37",
+  "Q1": [
+    {
+      "type": "red",
+      "n": 27,
+      "mean_group1": 72.78518518518518,
+      "mean_group2": 70.51481481481481,
+      "mean_diff_g1_minus_g2": 2.2703703703703706,
+      "paired_t": 2.117529628294462,
+      "p_ttest": 0.04393745488328224,
+      "p_wilcoxon": 0.030592909284534463,
+      "pearson_r": 0.6687414155912649,
+      "pearson_p": 0.0001371528494127153,
+      "g1_mean_std": 7.404787941034993,
+      "g1_mean_cv": 0.10378466548747059,
+      "g1_cronbach_alpha": 0.9137090931695928,
+      "g1_avg_spearman": 0.45341889759577586,
+      "g2_mean_std": 5.620085538934197,
+      "g2_mean_cv": 0.08044979714968326,
+      "g2_cronbach_alpha": 0.8609112681048963,
+      "g2_avg_spearman": 0.39476272577391547
+    },
+    {
+      "type": "white",
+      "n": 28,
+      "mean_group1": 73.78928571428571,
+      "mean_group2": 76.53214285714286,
+      "mean_diff_g1_minus_g2": -2.7428571428571433,
+      "paired_t": -2.913864049764965,
+      "p_ttest": 0.007088827423553613,
+      "p_wilcoxon": 0.0091184356537237,
+      "pearson_r": 0.25695549418741265,
+      "pearson_p": 0.1868410216532833,
+      "g1_mean_std": 10.567036288818942,
+      "g1_mean_cv": 0.1447311818059005,
+      "g1_cronbach_alpha": 0.7655702706181666,
+      "g1_avg_spearman": 0.2351849831803206,
+      "g2_mean_std": 7.140458932421489,
+      "g2_mean_cv": 0.09377676109052957,
+      "g2_cronbach_alpha": 0.6974703577071277,
+      "g2_avg_spearman": 0.14477788048484078
+    }
+  ],
+  "Q1_reliable_group": {
+    "red": 2,
+    "white": 2
+  },
+  "Q2_grade_counts": [
+    {
+      "wine_type": "red",
+      "grade": "一级",
+      "count": 3
+    },
+    {
+      "wine_type": "red",
+      "grade": "三级",
+      "count": 12
+    },
+    {
+      "wine_type": "red",
+      "grade": "二级",
+      "count": 4
+    },
+    {
+      "wine_type": "red",
+      "grade": "四级",
+      "count": 8
+    },
+    {
+      "wine_type": "white",
+      "grade": "一级",
+      "count": 2
+    },
+    {
+      "wine_type": "white",
+      "grade": "三级",
+      "count": 6
+    },
+    {
+      "wine_type": "white",
+      "grade": "二级",
+      "count": 7
+    },
+    {
+      "wine_type": "white",
+      "grade": "四级",
+      "count": 13
+    }
+  ],
+  "Q2_top_samples": [
+    {
+      "wine_type": "red",
+      "sample": 21,
+      "quality_score": 72.2,
+      "grape_pca_score": 99.99999999998566,
+      "composite_score": 84.70999999999356,
+      "grade": "一级"
+    },
+    {
+      "wine_type": "red",
+      "sample": 12,
+      "quality_score": 68.3,
+      "grape_pca_score": 97.95984859186102,
+      "composite_score": 81.64693186633747,
+      "grade": "一级"
+    },
+    {
+      "wine_type": "red",
+      "sample": 13,
+      "quality_score": 68.8,
+      "grape_pca_score": 76.17096417173188,
+      "composite_score": 72.11693387727935,
+      "grade": "一级"
+    },
+    {
+      "wine_type": "red",
+      "sample": 3,
+      "quality_score": 74.6,
+      "grape_pca_score": 42.39263658638425,
+      "composite_score": 60.10668646387292,
+      "grade": "二级"
+    },
+    {
+      "wine_type": "red",
+      "sample": 9,
+      "quality_score": 78.2,
+      "grape_pca_score": 37.89602377241021,
+      "composite_score": 60.0632106975846,
+      "grade": "二级"
+    },
+    {
+      "wine_type": "white",
+      "sample": 12,
+      "quality_score": 72.4,
+      "grape_pca_score": 99.99999999998442,
+      "composite_score": 84.819999999993,
+      "grade": "一级"
+    },
+    {
+      "wine_type": "white",
+      "sample": 14,
+      "quality_score": 77.1,
+      "grape_pca_score": 81.76078305737165,
+      "composite_score": 79.19735237581725,
+      "grade": "一级"
+    },
+    {
+      "wine_type": "white",
+      "sample": 1,
+      "quality_score": 77.9,
+      "grape_pca_score": 52.95797903580037,
+      "composite_score": 66.67609056611018,
+      "grade": "二级"
+    },
+    {
+      "wine_type": "white",
+      "sample": 8,
+      "quality_score": 72.3,
+      "grape_pca_score": 58.574235978133316,
+      "composite_score": 66.12340619016,
+      "grade": "二级"
+    },
+    {
+      "wine_type": "white",
+      "sample": 19,
+      "quality_score": 76.4,
+      "grape_pca_score": 47.96789550259442,
+      "composite_score": 63.605552976167495,
+      "grade": "二级"
+    }
+  ],
+  "Q3": [
+    {
+      "type": "red",
+      "n_samples": 27,
+      "pc1_corr": 0.2470421571034608,
+      "pc1_p": 0.2141288464502173,
+      "pc2_corr": 0.05391775962221792,
+      "wine_pc1_from_grape_cv_r2": 0.6526213388190134,
+      "wine_pc1_from_grape_cv_rmse": 1.3651067877684344
+    },
+    {
+      "type": "white",
+      "n_samples": 28,
+      "pc1_corr": -0.2966016136664876,
+      "pc1_p": 0.12536537883157636,
+      "pc2_corr": 0.13965929302758412,
+      "wine_pc1_from_grape_cv_r2": 0.3919774283129662,
+      "wine_pc1_from_grape_cv_rmse": 2.2051683626424827
+    }
+  ],
+  "Q4_best_by_type_feature": [
+    {
+      "type": "red",
+      "feature_set": "grape",
+      "model": "LinearBaseline",
+      "n_samples": 27,
+      "n_features": 122,
+      "cv_rmse": 2.6085066385598634,
+      "cv_mae": 2.106715803665279,
+      "cv_r2": 0.5534733328406394
+    },
+    {
+      "type": "white",
+      "feature_set": "wine",
+      "model": "RandomForest",
+      "n_samples": 28,
+      "n_features": 91,
+      "cv_rmse": 2.686829847012867,
+      "cv_mae": 2.0629663655045283,
+      "cv_r2": 0.25544153599099106
+    },
+    {
+      "type": "red",
+      "feature_set": "combined",
+      "model": "LinearBaseline",
+      "n_samples": 27,
+      "n_features": 213,
+      "cv_rmse": 2.992563260608481,
+      "cv_mae": 2.498089680142025,
+      "cv_r2": 0.41230744682428444
+    },
+    {
+      "type": "white",
+      "feature_set": "combined",
+      "model": "RandomForest",
+      "n_samples": 28,
+      "n_features": 213,
+      "cv_rmse": 3.051177856491933,
+      "cv_mae": 2.4329122555272127,
+      "cv_r2": 0.039818078797098644
+    },
+    {
+      "type": "white",
+      "feature_set": "grape",
+      "model": "RidgeCV",
+      "n_samples": 28,
+      "n_features": 122,
+      "cv_rmse": 3.403403607709287,
+      "cv_mae": 2.6162283502083357,
+      "cv_r2": -0.19466292647387595
+    },
+    {
+      "type": "red",
+      "feature_set": "wine",
+      "model": "RandomForest",
+      "n_samples": 27,
+      "n_features": 91,
+      "cv_rmse": 3.5127083146365163,
+      "cv_mae": 2.7690206419352226,
+      "cv_r2": 0.19025609935173937
+    }
+  ],
+  "Sensitivity": {
+    "red": 0.9804639804639804,
+    "white": 0.9890530925013684
+  }
+}

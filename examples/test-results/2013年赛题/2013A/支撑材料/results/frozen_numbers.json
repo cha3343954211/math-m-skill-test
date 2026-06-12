@@ -1,0 +1,46 @@
+{
+  "data_limitation": "原题目录仅含题面doc和readme.doc，不含附件1/2视频及附件3/4/5原图；本解答采用题面、公开摘要和交通流理论构建可复现参数化重构数据，所有视频相关数值不得冒充原始视频人工计数。",
+  "Q1": {
+    "q1_capacity_mean": 1022.4318564792147,
+    "q1_capacity_min": 752.4092331154985,
+    "q1_capacity_max": 1262.3823980736322,
+    "q1_capacity_cv": 0.17452531492584183,
+    "q1_queue_max_m": 928.3940060766939,
+    "q1_duration_min": 42
+  },
+  "Q2": {
+    "q2_video1_mean_capacity": 1022.4318564792147,
+    "q2_video2_mean_capacity": 815.6443731043812,
+    "q2_capacity_drop_pct_video2_vs_video1": 20.225062635168133,
+    "q2_video1_queue_max_m": 928.3940060766939,
+    "q2_video2_queue_max_m": 1478.0165078167051
+  },
+  "Q3": {
+    "q3_reg_intercept": 449.1856839456394,
+    "q3_reg_capacity_coef": -0.44562527465831087,
+    "q3_reg_duration_coef": 28.175547110884747,
+    "q3_reg_arrival_coef": -0.0025956039522674335,
+    "q3_r2": 0.8729938313465633,
+    "q3_rmse_m": 138.23127207082752,
+    "q3_mae_m": 114.36693417973817
+  },
+  "Q4": {
+    "q4_upstream_flow_pcu_h": 1500.0,
+    "q4_accident_capacity_pcu_h": 1022.4318564792147,
+    "q4_jam_density_pcu_m": 0.28,
+    "q4_target_length_m": 140.0,
+    "q4_time_to_intersection_min": 4.924951615617204,
+    "q4_time_to_intersection_s": 295.49709693703227
+  },
+  "baseline": {
+    "q4_baseline_capacity_pcu_h": 1000.0,
+    "q4_baseline_time_min": 4.704000000000001
+  },
+  "sources": [
+    "题面 CUMCM2013A.doc",
+    "readme.doc",
+    "CNKI/期刊公开摘要：李梦圆等，车道被占用对城市道路通行能力的影响，贵州师范学院学报，2013(12)",
+    "爱发表公开摘要：贾文，车道被占用对城市道路通行能力的影响，齐鲁工业大学学报，2014(01)",
+    "交通工程中排队累积与冲击波基本关系"
+  ]
+}

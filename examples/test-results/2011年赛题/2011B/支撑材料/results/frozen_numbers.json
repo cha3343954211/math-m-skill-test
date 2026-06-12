@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "problem": "CUMCM2011B 交巡警服务平台的设置与调度",
+    "generated_at": "2026-05-29T15:31:21",
+    "seed": 42
+  },
+  "data_audit": {
+    "nodes": 582,
+    "edges": 928,
+    "platforms": 80,
+    "city_exits": 17,
+    "A_exits": 13,
+    "missing": {
+      "nodes": {
+        "node": 0,
+        "x": 0,
+        "y": 0,
+        "area": 0,
+        "crime_rate": 0
+      },
+      "edges": {
+        "u": 0,
+        "v": 0
+      },
+      "platforms": {
+        "platform": 0,
+        "node": 0
+      }
+    },
+    "graph_connected": true,
+    "components": 1,
+    "random_seed": 42
+  },
+  "Q1": {
+    "A_nodes": 92,
+    "A_platforms": 20,
+    "threshold_min": 3.0,
+    "current_uncovered_nodes": 6,
+    "current_uncovered_rate": 0.06521739130434782,
+    "current_max_time_min": 5.700525046257202,
+    "current_avg_time_min": 1.121955227932758,
+    "current_workload_cv": 0.45464614550795385,
+    "current_workload_max_platform": "A20",
+    "current_workload_max": 11.5,
+    "current_workload_min": 1.6,
+    "A_block_max_arrival_min": 8.015456859909348,
+    "A_block_avg_arrival_min": 3.5529607271904005,
+    "recommended_add_k": 4,
+    "recommended_add_nodes": [
+      28,
+      40,
+      48,
+      87
+    ],
+    "after_add_uncovered_nodes": 0,
+    "after_add_max_time_min": 2.9000000000000004,
+    "after_add_avg_time_min": 0.8765485613367371,
+    "after_add_workload_cv": 1.622958627269073
+  },
+  "Q2": {
+    "city_nodes": 582,
+    "city_platforms": 80,
+    "city_current_uncovered_nodes": 138,
+    "city_current_uncovered_rate": 0.23711340206185566,
+    "city_current_max_time_min": 12.680273550544841,
+    "worst_area_by_uncovered_rate": "F",
+    "worst_area_uncovered_rate": 0.32407407407407407,
+    "heaviest_area_by_crime_per_platform": "C",
+    "city_recommended_new_nodes": [
+      517,
+      315,
+      408,
+      455,
+      206,
+      392,
+      509,
+      285,
+      239,
+      261
+    ],
+    "city_after_improve_uncovered_nodes": 72,
+    "city_after_improve_max_time_min": 12.680273550544841,
+    "city_block_max_arrival_min": 12.680273550544841,
+    "city_block_avg_arrival_min": 5.0652910523541665,
+    "p32_all_exits_blockable_before_suspect": true,
+    "p32_min_safety_margin_min": 13.259191010524502,
+    "p32_riskiest_exit": 202
+  }
+}
